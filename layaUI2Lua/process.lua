@@ -306,22 +306,6 @@ function run(dirName, fileName)
         return
     end
 
-    local uiResName = pathCfg.uiProj.resName;
-
-    local fromDir = pathCfg.codePorj.res;
-    local toDir = pathCfg.uiProj.res;
-
-    -- 删除旧的
-    -- kit.excute("rd /s/q", pathCfg.uiProj.res)
-
-    -- 同步图片
-    kit.excute("xcopy /s/y", fromDir, toDir .. "/")
-
-    
-    do
-        return
-    end
-
     -- 目录下只有一层目录
     local url, attr, target, suffix
     for file in lfs.dir(uiDir) do

@@ -65,5 +65,8 @@ function copyRes()
     local fromDir = PathCfg.codePorj.res;
     local toDir = PathCfg.uiProj.res;
 
+    -- 删除旧的
+    -- kit.excute("rd /s/q", pathCfg.uiProj.res)
+
     kit.excute("xcopy /s/y", fromDir, toDir .. "/")
 end
