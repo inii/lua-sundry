@@ -24,7 +24,8 @@ local lfs = require("lfs")
 function copyLuaTemplate()
     local targetDir = PathCfg.codePorj.module .. "/" .. dirName
     if not kit.is_dir(targetDir) then -- 已经存在
-        lfs.mkdir(targetDir)
+        local ok, err = lfs.mkdir(targetDir)
+        if not ok then return print("failded copyLuaTemplate", err) end
     end
     
     local targetFile, fileStr, tempUrl
@@ -48,7 +49,8 @@ end
 function copyUITemplate()
     local targetDir = PathCfg.uiProj.pages .. "/" .. dirName
     if not kit.is_dir(targetDir) then -- 已经存在
-        lfs.mkdir(targetDir)
+        local ok, err = lfs.mkdir(targetDir)
+        if not ok then return print("failded copyUITemplate", err) end
     end
     
     local targetFile, fileStr, tempUrl
