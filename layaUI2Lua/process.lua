@@ -258,15 +258,6 @@ local function test()
     kit.writeStr2File("TestSomethingModule.lua", modStr)
 end
 
--- local function handleAll()
---     -- ui元素
---         -- uiDir
---     local url = lfs.currentdir() .. "//target.json"
---     return json.decode(kit.readFile2Str(url))
---     -- end
-
--- end
-
 function process.run()
     if runTest then
         os.execute("chcp 65001")
