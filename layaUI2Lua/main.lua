@@ -1,16 +1,32 @@
 -- require("socket")
 -- require("LuaPanda").start("127.0.0.1", 8818);
-print("hello")
-
+print("arrived main.lua")
 collectgarbage("stop")
 
+_G.kit = require("kit");
+_G.br = "\n\t";
+
+local args = ... or {};
+local dirName, fileName = args[1], args[2];
+local prcs = require("process");
+prcs.run(dirName, fileName);
+
+-- local str = "Act1000SignInPanel.lua"
+-- print("is find panel:", string.find(str, "Panel.lua$"))
+
+-- local test, other = require("test")
+
+-- test.hello(test);
+-- -- print("test.a",test.a)
+-- local other = require("other")
+-- other.bye()
 
 -- package.cpath = package.cpath .. ";D://toji//lua-sundry//layaUI2Lua//lib//?.dll"
 -- print("package.cpath:", package.cpath)
 -- print("package.path:", package.path)
 -- local function loopTap(tab, deepth)
 --     local curDeep = 1
-    
+
 --     local function _loop(tab, deepth)
 --         if curDeep > deepth then
 --             return
@@ -32,15 +48,4 @@ collectgarbage("stop")
 -- end
 
 -- loopTap(package, 4)
-
-_G.kit = require("kit");
-_G.br = "\n\t"
-
-local prcs = require("process");
-prcs.run()
-
-
-
-
-
 

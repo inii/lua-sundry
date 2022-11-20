@@ -10,8 +10,25 @@
 -- print(md5.sumhexa(str))
 
 
-local str = "#f6db86首 充 送 #1cc1f7非 卖 蓝 色 航 母\n              #f6db86充 值 金 币 双 倍 返 利" 
+print("in test file:", ...)
 
-str = string.gsub(str, "\n", "")
-print(str)
+-- local str = "#f6db86首 充 送 #1cc1f7非 卖 蓝 色 航 母\n              #f6db86充 值 金 币 双 倍 返 利" 
 
+-- str = string.gsub(str, "\n", "")
+-- print(str)
+
+
+module(..., package.seeall)
+
+print("hhexxxxxxxx")
+a = 1
+function hello(self)
+    print("in function hello", a)
+end
+
+local print= print
+module("other")
+
+function bye()
+    print("bye 再见 ")
+end

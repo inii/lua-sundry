@@ -1,13 +1,15 @@
 local lfs = require("lfs")
 -- print("lfs.currentdir():", lfs.currentdir())
 
+local dump = kit.dump
+
 -- local md5 = require("md5")
 local json = require("json")
 local generator = require("generator")
 
 -- 主目录
 local MainDir = "F:/trunk/Client/Game"
--- 代码目录
+-- 代码目录 (lua code directory)
 local SrcModuleDir = MainDir .. "/src/able/module"
 -- 资源目录
 local ResDir = "F:/trunk/Client/Game/res"
@@ -16,6 +18,20 @@ local uiCodeDir = SrcModuleDir .. "/activityModule"
 
 -- laya ui文件路径
 local uiDir = "F:/myLaya/laya/pages"
+
+--[[
+    . 提示输入模块目录名 如：activityModule，默认活动目录;    
+    . 提示输入文件名字，比如 HahaPanle
+    . 在lua工程下创建lua模板文件，包含方法autoUI(),生成的代码会替换这个函数
+    . 在LayaAir编辑器中创建ui模板文件
+    . 将ui文件导出到lua代码中（替换autoUI方法）
+
+    ui文件结构和lua文件结构是对应的
+    uiDir/AbcModule.ui 在转换后会复制到 SrcModuleDir/xxxModule/AbcModule.lua
+    uiDir/BbbPanle.ui 在转换后会复制到 SrcModuleDir/xxxModule/panel/AaaPanle.lua
+    其他的则会复制到 SrcModuleDir/xxxModule/view/AaaCell.lua
+]]
+
 local strFmt_ = string.format
 
 -- 方便获取lang文件的key
@@ -38,7 +54,7 @@ _switchLang()
 local function _fmtText(str)
     if not str then
         print("not text in function _fmtText")
-        return 
+        return
     end
     -- print("str:", str)
     -- print("md5", md5.sumhexa(str))
@@ -61,7 +77,7 @@ local function _getXY(dt, parent)
         print(dt.var .. " y no assign")
     end
 
-    if(parent and parent.props and parent.props.height) then
+    if (parent and parent.props and parent.props.height) then
         y = parent.props.height - y
     end
 
@@ -93,7 +109,6 @@ local function _geCellHeight(cellName)
     return tab and tab.props and tab.props.height or 0
 end
 
-
 local NodeStruct = {
     -- @raw 原始ui数据
     new = function(uitype, raw, parent)
@@ -102,7 +117,7 @@ local NodeStruct = {
             return
         end
 
-        local prop = raw.props 
+        local prop = raw.props
         local x, y = _getXY(prop, parent)
         local w, h = _getWH(prop)
 
@@ -113,20 +128,20 @@ local NodeStruct = {
             ay = prop.anchorY or 1,
             width = w,
             height = h,
-            name = prop.var, 
+            name = prop.var,
             scaleX = prop.scaleX, -- 缩放(不需要默认值)
             scaleY = prop.scaleY,
             rt = prop.rotation, -- 旋转(不需要默认值)
             parent = parent, -- 父节点
-            uitype = uitype,
+            uitype = uitype
         }
-    end,
+    end
 }
 
 local ImgStruct = {
     new = function(uitype, raw, parent)
         local node = NodeStruct.new(uitype, raw, parent)
-        local prop = raw.props 
+        local prop = raw.props
         node.skin = prop.skin -- 图片路径
         node.sizeScale9 = prop.sizeGrid -- 九宫格分割
 
@@ -137,9 +152,9 @@ local ImgStruct = {
 local LabStruct = {
     new = function(uitype, raw, parent)
         local node = NodeStruct.new(uitype, raw, parent)
-        local prop = raw.props 
+        local prop = raw.props
         node.font = prop.font
-        node.fontSize = prop.fontSize or 18 
+        node.fontSize = prop.fontSize or 18
         node.color = prop.color or "#ffffff"
         node.text = _fmtText(prop.innerHTML or prop.text)
 
@@ -172,7 +187,8 @@ local UITypes = {
     lsv = ListStruct
 }
 
-local process = {}
+module(..., package.seeall)
+
 -- --  declare functions
 -- local genSprite, genButton, genText, genRichText, genList, genMenu
 
@@ -184,7 +200,7 @@ local function formatElement(tab)
     local rst = {}
     local function format_(v)
         local parent = rst[v.nodeParent]
-        local prop = v.props 
+        local prop = v.props
         if prop and prop.var then
             -- prefix : UIType   "btnClick" -> "btn"
             local prefix = UITypes[prop.var] and prop.var or string.match(prop.var, "^(%l+)")
@@ -208,6 +224,7 @@ local function formatElement(tab)
     return rst
 end
 
+-- 得到lua代码的字符串
 local function getLuaCodeStr(url)
     local result = "\t"
     print("url:", url)
@@ -245,27 +262,63 @@ local function copy2Remote()
     print("xcopy done .................. ")
 end
 
-local function test()
-    local modStr = require("modTemplateStr");
-    -- xpcall(function ()
-    --     os.execute("del TestSomethingModule")
-    -- end)
-
-    -- local uiStr = json.decode(jstr)
-    -- local insert = kit.readFile2Str(file)
-
-    modStr = strFmt_(modStr, getLuaCodeStr())
-    kit.writeStr2File("TestSomethingModule.lua", modStr)
-end
-
-function process.run()
+local function runTest()
+    local runTest = false
     if runTest then
+
+        print("test start...................")
+
         os.execute("chcp 65001")
         os.execute("cls")
-        print("process run...................")
-        test()
+
+        local modStr = require("modTemplateStr");
+        -- xpcall(function ()
+        --     os.execute("del TestSomethingModule")
+        -- end)
+
+        -- local uiStr = json.decode(jstr)
+        -- local insert = kit.readFile2Str(file)
+
+        modStr = strFmt_(modStr, getLuaCodeStr())
+        kit.writeStr2File("TestSomethingModule.lua", modStr)
+
         copy2Remote()
-        print("process done ................. ")
+        print("test done ................. ")
+    end
+
+    return runTest
+end
+
+local moduleDirName = ""
+-- 目录模块名
+function getModuleDirName()
+
+end
+
+-- 目标文件名
+function getTargetFileName()
+
+end
+
+local pathCfg = require("config_path")
+function run(dirName, fileName)
+    if runTest() then
+        return
+    end
+
+    local uiResName = pathCfg.uiProj.resName;
+
+    local fromDir = pathCfg.codePorj.res;
+    local toDir = pathCfg.uiProj.res;
+
+    -- 删除旧的
+    -- kit.excute("rd /s/q", pathCfg.uiProj.res)
+
+    -- 同步图片
+    kit.excute("xcopy /s/y", fromDir, toDir .. "/")
+
+    
+    do
         return
     end
 
@@ -294,8 +347,6 @@ function process.run()
         end
     end
 
-
 end
-
-return process
+-- return process
 
