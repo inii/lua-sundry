@@ -15,7 +15,6 @@ if not fileName then
     return
 end
 
-local PathCfg = require("config_path")
 local kit = require("kit")
 local lfs = require("lfs")
 

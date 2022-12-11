@@ -7,6 +7,6 @@ echo %driName%
 set /p fileName="输入文件名(input file name: eg. Act12284Module | Act1002Panel | Act1002Cell)"  
 echo %fileName%
 
-%~dp0\libs\lua.exe newFile.lua %driName% %fileName%
+%~dp0\libs\lua.exe src\newFile.lua %driName% %fileName%
 
 pause

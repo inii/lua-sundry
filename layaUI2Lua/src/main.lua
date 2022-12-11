@@ -3,7 +3,13 @@
 print("arrived file: main.lua")
 collectgarbage("stop")
 
-_G.kit = require("kit");
+
+package.path = "src/?.lua;" --.. package.path;
+
+
+
+require("kit");
+require("config_path")
 
 local args = ... or {};
 local dirName, fileName = args[1], args[2];

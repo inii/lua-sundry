@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":7,
+    "selecteID":2,
     "props":{"y":352,"x":278,"width":557,"sceneColor":"#000000","height":704,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":351,"x":278,"width":557,"var":"imgBg","skin":"image/common2/bg_alert.png","sizeGrid":"16,201,123,173","height":704,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":351,"x":278,"width":557,"var":"imgBg","skin":"image/common2/bg_alert.png","sizeGrid":"16,201,123,173","name":"111","height":704,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgBg)",
             "isOpen":true,
@@ -71,9 +71,9 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":59,"x":437,"var":"labTips","text":"可通过以下途径获得装扮经验","fontSize":24,"color":"#ffffff","bold":true,"anchorX":1,"align":"right"},
+            "props":{"y":71,"x":278,"var":"richTips","text":"#ffffff是否消耗#ffcc00%d金币#ffffff进行加速？","name":"111","fontSize":24,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"right"},
             "nodeParent":1,
-            "label":"Label(labTips)",
+            "label":"Label(richTips)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -87,12 +87,26 @@
             "props":{"y":96,"x":13,"width":530,"var":"lsv","runtime":"AutoTestGiftCell","height":511},
             "nodeParent":1,
             "label":"List(lsv)",
-            "isDirectory":false,
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
+            "hasChild":true,
             "compId":7,
             "child":[
-                ],
+                {
+                    "x":30,
+                    "type":"UIView",
+                    "source":"autoTestModule/AutoTestGiftCell.ui",
+                    "props":{},
+                    "nodeParent":7,
+                    "label":"UIView",
+                    "isDirectory":false,
+                    "isAniNode":false,
+                    "hasChild":false,
+                    "compId":14,
+                    "child":[
+                        ]
+                }],
             "$HIDDEN":true
         },
         {

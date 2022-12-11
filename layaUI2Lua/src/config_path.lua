@@ -1,10 +1,10 @@
 -- 配置代码主目录 和 ui主目录
-local codeUrl = "F:/trunk/src/Client/Game";
-local uiUrl = "F:/myLaya/laya"
+local codeUrl = "D:/taiFeng_TOD_trunk/wdsm_trunk/src/Client/Game";
+local uiUrl = "./myLaya/laya"
 
 
 -- 下面的无需修改
-return {
+PathCfg = {
     codePorj = {
         main = codeUrl,
         resName = "res",

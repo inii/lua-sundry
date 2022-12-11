@@ -10,7 +10,7 @@
 module(..., package.seeall)
 
 local strFmt_ = string.format
-local br = "\n\t";
+local nt1, nt2, n2t = "\n\t", "\n\t\t", "\n\n\t";
 
 local function _setParentNm(parent)
     return parent and parent.name or "root"
@@ -27,7 +27,7 @@ function generator.gen_node(dt)
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
 
-    return table.concat(result, "\n\t")
+    return table.concat(result, nt2)
 end
 
 function generator.gen_img(dt)
@@ -72,20 +72,17 @@ function generator.gen_img(dt)
     local ax, ay = dt.ax, dt.ay
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", ax, ay))
 
-    return table.concat(result, br)
+    return table.concat(result, nt2)
 end
 
 function generator.gen_btn(dt)
-    local headStr = strFmt_("local %s = display.newUIPushButton({", dt.name)
-    local tailStr = "})"
+    local argTab = {strFmt_("local %s = display.newUIPushButton({", dt.name)}
 
-    local spaces = "\n\t\t\t\t\t\t"
-    local argTab = {}
     if dt.skin then
         table.insert(argTab, "skins = " .. "\"" .. dt.skin .. "\",")
     end
 
-    table.insert(argTab, "handler = handler(self, self.closeClick),")
+    -- table.insert(argTab, "handler = handler(self, self.closeClick),")
 
     local w, h = dt.width, dt.height
     if w and h and w > 0 and h > 0 then
@@ -95,9 +92,9 @@ function generator.gen_btn(dt)
     local x, y = dt.x, dt.y
     table.insert(argTab, strFmt_("x = %s, y = %s,", x, y))
     table.insert(argTab, strFmt_("parent = %s,", _setParentNm(dt.parent)))
+    table.insert(argTab, "})")
 
-    local midStr = table.concat(argTab, spaces)
-    return headStr .. midStr .. tailStr
+    return table.concat(argTab, "\n\t\t")
 end
 
 function generator.gen_lab(dt)
@@ -124,9 +121,9 @@ function generator.gen_lab(dt)
     table.insert(result, table.concat(argTab, ", ") .. "})")
 
     local pname = _setParentNm(dt.parent)
-    table.insert(result, strFmt_(":addTo(%s)", pname))
-    table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
-    table.insert(result, strFmt_(":pos(%s, %s)", dt.x, dt.y))
+    table.insert(result, strFmt_("\t:addTo(%s)", pname))
+    table.insert(result, strFmt_("\t:setAnchorPoint(%s, %s)", dt.ax, dt.ay))
+    table.insert(result, strFmt_("\t:pos(%s, %s)", dt.x, dt.y))
 
     return table.concat(result, "\n\t")
 end
@@ -138,18 +135,21 @@ function generator.gen_rich(dt)
     table.insert(result, strFmt_(":addTo(%s)", pname))
 
     local w, h = dt.width, dt.height
-    table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
-    table.insert(result, strFmt_(":ignoreContentAdaptWidth(false)"))
-    table.insert(result, strFmt_(":setVirticalSpace(1)"))
+    if w > 0 then
+        table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
+        table.insert(result, strFmt_(":ignoreContentAdaptWidth(false)"))
+    end
+    
+    -- table.insert(result, strFmt_(":setVirticalSpace(1)"))
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":pos(%s, %s)", dt.x, dt.y))
 
     local str = dt.text or "\"\""
     if str and str ~= [[""]] then
-        table.insert(result, strFmt_(":setString(%s, %s)", str, 18))
+        table.insert(result, strFmt_(":setString(%s, %s)", str, dt.fontSize))
     end
 
-    return table.concat(result, "\n\t")
+    return table.concat(result, "\n\t\t")
 end
 
 function generator.gen_lsv(dt)
@@ -162,48 +162,58 @@ function generator.gen_lsv(dt)
     -- 坐标转化为锚点(0，0)
     x, y = x - ax * w, y - ay * h
 
-    local pstrArr = {}
-    if dt.itemName then
-        -- strFmt_([[local %s = ab.import(".activityModule.view.%s", "able.module")]], dt.itemName, dt.itemName)
-        strFmt_([[local %s = ab.import(".autoTestModule.view.%s", "able.module")]], dt.itemName, dt.itemName)
+    local headStr = ""
+    if dt.itemName and dt.moduleName then
+        headStr = strFmt_([[local %s = ab.import(".%s.view.%s", "able.module")]], dt.itemName, dt.moduleName, dt.itemName)
     end
 
-    table.insert(pstrArr, "local listParams = {")
-    table.insert(pstrArr, strFmt_("\tparent = %s,", _setParentNm(dt.parent)))
-    table.insert(pstrArr, strFmt_("\tviewRect = cc.rect(%s, %s, %s, %s),", x, y, w, h))
-    table.insert(pstrArr, strFmt_("\tisDebug = %s,", "true"))
+    local midArr = {}
+    table.insert(midArr, "local listParams = {")
+    table.insert(midArr, strFmt_("parent = %s,", _setParentNm(dt.parent)))
+    table.insert(midArr, strFmt_("viewRect = cc.rect(%s, %s, %s, %s),", x, y, w, h))
+    table.insert(midArr, strFmt_("isDebug = %s,", "true"))
 
     if dt.itemName then
-        table.insert(pstrArr, strFmt_("\tcellClass = %s,", dt.itemName))
+        table.insert(midArr, strFmt_("cellClass = %s,", dt.itemName))
     end
 
     if dt.itemH then
-        table.insert(pstrArr, strFmt_("\titemSize = cc.size(%s, %s),", w, dt.itemH))
+        table.insert(midArr, strFmt_("itemSize = cc.size(%s, %s),", w, dt.itemH))
     end
 
-    table.insert(pstrArr, "}\n")
+    table.insert(midArr, "}")
+    local midStr = table.concat(midArr, nt2)
 
-    table.insert(pstrArr, strFmt_("local listview = UIUtil:createListview(%s, %s)", "{len=3}", "listParams"))
-    table.insert(pstrArr, "listview:reload()")
+    local tailArr = {}
+    table.insert(tailArr, strFmt_("local listview = UIUtil:createListview(%s, %s)", "{len=3}", "listParams"))
+    table.insert(tailArr, "listview:reload()")
+    local tailStr = table.concat(tailArr, "\n\t")
 
-    return table.concat(pstrArr, br)
+    return table.concat({headStr, midStr, tailStr}, "\n\t")
 end
 
--- 选
 -- local function generator.gen_menu()
 --     return ""
 -- end 
 
 
-function generator.genCode(v, result)
+function generator.genCode(v)
     local genCodeFun = generator["gen_" .. v.uitype]
     if not genCodeFun then
         print(v.name , "invalid uitype: ", v.uitype)
-        return ''
+        return ""
     end
-
-    result = result .. (genCodeFun(v))
-    result = result .. "\n" .. br
-    return result
+    
+    return genCodeFun(v)
 end
 
+function generator.genFianlCode(names, codes)
+    local str = "\t" .. table.concat(codes, n2t)
+
+    local nmStr = {}
+    for i, nm in ipairs(names) do
+        table.insert(nmStr, strFmt_("%s=%s", nm, nm) )
+    end
+    str = str .. "\n\n\treturn {" .. table.concat(nmStr, ", ") .. "}"
+    return str
+end

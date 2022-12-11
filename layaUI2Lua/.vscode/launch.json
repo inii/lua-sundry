@@ -9,8 +9,9 @@
             "request": "launch",
             "name": "Debug",
             "stopOnEntry": false,
+            // "cwd": "${workspaceFolder}/src",
             "luaexe": "${workspaceFolder}/libs/lua.exe",
-            "program": "${workspaceFolder}/main.lua"
+            "program": "${workspaceFolder}/src/main.lua"
         }
     ]
 }

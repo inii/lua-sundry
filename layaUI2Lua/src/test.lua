@@ -65,3 +65,14 @@ print("in test file:", ...)
 
 -- print(string.match("fileName", "%u[^%s]+$"))
 print(string.match("AutoTestModule.lua", "(%u%l+)%.lua$"))
+
+local path = [[ C:\Users\Administrator\Desktop\lua-sundry\layaUI2Lua/AutoTestGiftCell.ui]]
+print(string.gsub(path, [[\]], [[/]]))
+
+local a = {a=3,b=4}
+
+local c = setmetatable({}, {__index = a})
+
+c.a=5
+print(c.a) 
+print(rawget(c, "a"))

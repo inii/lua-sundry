@@ -1,6 +1,6 @@
 local lfs = require("lfs")
 
-module(..., package.seeall)
+kit = module(..., package.seeall)
 
 function excute(cmdStr, path1, path2)
     local tab = {cmdStr} 
@@ -35,6 +35,7 @@ function writeStr2File(path, str, mod)
 end
 
 function readFile2Str(path)
+    path = string.gsub(path, [[\]], [[/]])
     local f = assert(io.open(path, "r"), path)
 
     local lines = f:read("*all")
