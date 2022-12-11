@@ -18,17 +18,50 @@ print("in test file:", ...)
 -- print(str)
 
 
-module(..., package.seeall)
+-- module(..., package.seeall)
 
-print("hhexxxxxxxx")
-a = 1
-function hello(self)
-    print("in function hello", a)
-end
+-- print("hhexxxxxxxx")
+-- a = 1
+-- function hello(self)
+--     print("in function hello", a)
+-- end
 
-local print= print
-module("other")
+-- local print= print
+-- module("other")
 
-function bye()
-    print("bye 再见 ")
-end
+-- function bye()
+--     print("bye 再见 ")
+-- end
+
+-- local kit = require("kit")
+-- local PathCfg = require("config_path")
+-- local dirName = ""
+-- local targetDir = PathCfg.codePorj.module --.. "/" .. dirName
+
+
+-- print("is dir:", kit.isDir(targetDir))
+
+-- local str = "function AutoTestModule:initUI() self:autoUI()  end \n   function AutoTestModule:autoUI() xxx end"
+-- -- "hahha"
+-- local rst = string.gsub(str, "([^self]:autoUI .* end)", "hahahhhahah")
+
+-- print("result:", rst)
+
+
+-- local rst = string.gsub(str, "auto(.*)end", "hahah")
+-- print(rst)
+
+-- for k, v in string.gmatch(str, "auto(.*)end", -1) do
+--     print(k, v)
+-- end
+
+-- print(string.gsub(" function AutoTestModule:ctor() self:autoUI()| function xxx:autoUI() xxx end", "function[%s]+([^%s]+):autoUI(.*)end",  "%1codeStr%1"))
+
+
+-- print(string.format(":autoUI()%%1\n%s\nend", "codeStr"))
+
+
+
+
+-- print(string.match("fileName", "%u[^%s]+$"))
+print(string.match("AutoTestModule.lua", "(%u%l+)%.lua$"))

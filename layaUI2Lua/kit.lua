@@ -26,9 +26,12 @@ end
 function writeStr2File(path, str, mod)
     local f = assert(io.open(path, mod or 'w'), path)
 
-    f:write(str)
+    local rst = f:write(str)
     f:flush()
     f:close()
+    if rst then
+        print("success write to ", path)
+    end
 end
 
 function readFile2Str(path)
@@ -87,10 +90,8 @@ function handFileInDir(path, handler)
             url = path .. '/' .. file
             attr = lfs.attributes(url)
             if attr.mode == "directory" then
-                print(url .. "  -->  " .. attr.mode)
                 handFileInDir(url, handler)
             else
-                print(url .. "  -->  " .. attr.mode)
                 if handler then
                     handler(url, file)
                 end
@@ -99,18 +100,31 @@ function handFileInDir(path, handler)
     end
 end
 
--- 检测路径是否目录
-function is_dir(sPath)
-    if type(sPath) ~= "string" then
-        return false
+-- 目录或者文件
+function getFileMode(path)
+    if type(path) ~= "string" then
+        print("path is not a string", path)
+        return nil
     end
 
-    local attr = lfs.attributes(sPath)
+    local attr = lfs.attributes(path)
     if not attr then
-        return false
-    end
+        print("dir no attributtes")
+        return nil
+    end    
 
-    return attr.mode == "directory"
+    print("attr.mode:", attr.mode)
+    return attr.mode
+end
+
+-- 检测路径是否目录
+function isDir(path)
+    return getFileMode(path) == "directory"
+end
+
+-- 检测路径是否文件
+function isFile(path)
+    return getFileMode(path) == "file"
 end
 
 -- 文件是否存在
@@ -126,12 +140,12 @@ end
 
 -- 获取文件路径
 function getFileDir(filename)
-    return string.match(filename, "(.+)/[^/]*%.%w+$") -- *nix system
+    return string.match(filename, "(.+)/[^/]*%.%w+$") 
 end
 
 -- 获取文件名
-function strippath(filename)
-    return string.match(filename, ".+/([^/]*%.%w+)$") -- *nix system
+function stripPath(filename)
+    return string.match(filename, ".+/([^/]*%.%w+)$") 
 end
 
 -- 去除扩展名

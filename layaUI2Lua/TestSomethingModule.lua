@@ -57,7 +57,7 @@ function TestSomethingModule:initUI(root)
 		itemSize = cc.size(550,135),
 	}
 
-	local listview=UIUtil:createListview({len=3}, listParams)
+	local listview = UIUtil:createListview({len=3}, listParams)
 	listview:reload()
 
 	local rich_1 = cc.ui.UIRichText.new()

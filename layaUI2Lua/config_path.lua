@@ -1,7 +1,9 @@
--- 文件路径配置
-local codeUrl = "F:/trunk/Client/Game";
+-- 配置代码主目录 和 ui主目录
+local codeUrl = "F:/trunk/src/Client/Game";
 local uiUrl = "F:/myLaya/laya"
 
+
+-- 下面的无需修改
 return {
     codePorj = {
         main = codeUrl,
@@ -13,6 +15,6 @@ return {
         main = uiUrl,
         resName = "assets",
         res = uiUrl .. "/assets",
-        pages = uiUrl .. "pages"
+        pages = uiUrl .. "/pages"
     }
 }

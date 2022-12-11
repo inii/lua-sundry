@@ -23,24 +23,30 @@ local lfs = require("lfs")
 -- 复制lua模板
 function copyLuaTemplate()
     local targetDir = PathCfg.codePorj.module .. "/" .. dirName
-    if not kit.is_dir(targetDir) then -- 已经存在
-        local ok, err = lfs.mkdir(targetDir)
-        if not ok then return print("failded copyLuaTemplate", err) end
+    
+    local tempUrl
+    if string.find(fileName, "Module$") then 
+        tempUrl = lfs.currentdir() .. "/template/ModuleTemplate.lua"
+    elseif string.find(fileName, "Panel$") then
+        tempUrl = lfs.currentdir() .. "/template/PanelTemplate.lua"
+        targetDir = targetDir .. "/panel"
+    else
+        tempUrl = lfs.currentdir() .. "/template/ViewTemplate.lua"
+        targetDir = targetDir .. "/view"
     end
     
-    local targetFile, fileStr, tempUrl
-    if string.find(dirName, "Module$") then 
-        tempUrl = lfs.currentdir() .. "/template/ModuleTemplate.lua"
-        targetFile = targetDir .. string.format("/%s.lua", fileName)
-    elseif string.find(dirName, "Panel$") then
-        tempUrl = lfs.currentdir() .. "/template/PanelTemplate.lua"
-        targetFile = targetDir .. string.format("/panel/%s.lua", fileName)
-    else
-        tempUrl = lfs.currentdir() .. "/template/PanelTemplate.lua"
-        targetFile = targetDir .. string.format("/panel/%s.lua", fileName)
+    if not kit.isDir(targetDir) then -- 不存在，创建
+        local ok, err = lfs.mkdir(targetDir)
+        if not ok then return print("failded copyLuaTemplate", targetDir, err) end
     end
 
-    fileStr = kit.readFile2Str(tempUrl)
+    local targetFile = targetDir .. string.format("/%s.lua", fileName)
+    if kit.isFile(targetFile) then
+        print("no need to create a lua file existed.", targetFile)        
+        return
+    end
+
+    local fileStr = kit.readFile2Str(tempUrl)
     fileStr = string.gsub(fileStr, "Replace_Name", fileName)
     kit.writeStr2File(targetFile, fileStr)
 end
@@ -48,17 +54,19 @@ end
 -- 复制ui模板
 function copyUITemplate()
     local targetDir = PathCfg.uiProj.pages .. "/" .. dirName
-    if not kit.is_dir(targetDir) then -- 已经存在
+    if not kit.isDir(targetDir) then -- 不存在，创建
         local ok, err = lfs.mkdir(targetDir)
         if not ok then return print("failded copyUITemplate", err) end
     end
     
-    local targetFile, fileStr, tempUrl
+    local targetFile = targetDir .. string.format("/%s.ui", fileName)
+    if kit.isFile(targetFile) then
+        print("no need to create a ui file existed.", targetFile)        
+        return
+    end
 
-    tempUrl = lfs.currentdir() .. "/template/UITemplate.ui"
-    targetFile = targetDir .. string.format("/%s.ui", fileName)
-    fileStr = kit.readFile2Str(tempUrl)
-    fileStr = string.gsub(fileStr, "Replace_Name", fileName)
+    local tempUrl = lfs.currentdir() .. "/template/UITemplate.ui"
+    local fileStr = kit.readFile2Str(tempUrl)
     kit.writeStr2File(targetFile, fileStr)
 end
 
@@ -72,3 +80,9 @@ function copyRes()
 
     kit.excute("xcopy /s/y", fromDir, toDir .. "/")
 end
+
+
+
+copyLuaTemplate()
+copyUITemplate()
+-- copyRes()

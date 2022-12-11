@@ -1,15 +1,39 @@
 -- require("socket")
 -- require("LuaPanda").start("127.0.0.1", 8818);
-print("arrived main.lua")
+print("arrived file: main.lua")
 collectgarbage("stop")
 
 _G.kit = require("kit");
-_G.br = "\n\t";
 
 local args = ... or {};
 local dirName, fileName = args[1], args[2];
 local prcs = require("process");
 prcs.run(dirName, fileName);
+
+-- local PathCfg = require("config_path")
+-- local filePrefix = "^" .. PathCfg.uiProj.pages
+-- local fileSuffix = ".ui$"
+-- kit.handFileInDir(PathCfg.uiProj.pages, function(url, file)
+--     url = string.gsub(url, filePrefix, "F:/aaa")
+--     url = string.gsub(url, fileSuffix, ".lua")
+--     print(url)
+-- end)
+
+
+
+
+-- local str = "function Class:autoUI()\
+-- \
+-- end"
+
+-- -- print("str:", str)
+
+-- local rst = string.gsub(str, ":autoUI(.*)end", ":autoUI\nhahahhha\nend")
+-- print("rst")
+-- print(rst)
+
+
+
 
 -- local str = "Act1000SignInPanel.lua"
 -- print("is find panel:", string.find(str, "Panel.lua$"))

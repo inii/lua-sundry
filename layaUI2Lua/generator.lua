@@ -1,16 +1,33 @@
-local generator = {}
+--[[
+    Q:
+    1. why list not need position?
+
+    todo:
+    1. finish scrollview.
+    2. better template.
+
+]] 
+module(..., package.seeall)
 
 local strFmt_ = string.format
+local br = "\n\t";
 
 local function _setParentNm(parent)
-    return parent and parent.name or "self._root"
+    return parent and parent.name or "root"
 end
 
 function generator.gen_node(dt)
     local x, y = dt.x or 0, dt.y or 0
+    local w, h = dt.width or 0, dt.height or 0
     local p = _setParentNm(dt.parent)
 
-    return string.format("local %s = display.newNode():pos(%s, %s):addTo(root)", dt.name, x, y, p)
+    local result = {strFmt_("local %s = display.newNode()", dt.name)}
+    table.insert(result, strFmt_(":addTo(%s)", p))
+    table.insert(result, strFmt_(":pos(%s, %s)", x, y))
+    table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
+    table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
+
+    return table.concat(result, "\n\t")
 end
 
 function generator.gen_img(dt)
@@ -22,9 +39,9 @@ function generator.gen_img(dt)
 
     local constructArr = {url, x, y}
     local isSca9
-    if dt.sizeGrid then
+    if dt.sizeScale9 then
         -- 上右下左
-        local raw = kit.parse2Num(dt.sizeGrid)
+        local raw = kit.parse2Num(dt.sizeScale9)
         table.insert(constructArr, strFmt_("cc.size(%s, %s)", w, h))
         table.insert(constructArr, strFmt_("cc.rect(%s, %s, %s, %s)", raw[4], raw[3], 1, 1))
 
@@ -147,25 +164,26 @@ function generator.gen_lsv(dt)
 
     local pstrArr = {}
     if dt.itemName then
-        strFmt_([[local %s = ab.import(".activityModule.view.%s", "able.module")]], dt.itemName, dt.itemName)
+        -- strFmt_([[local %s = ab.import(".activityModule.view.%s", "able.module")]], dt.itemName, dt.itemName)
+        strFmt_([[local %s = ab.import(".autoTestModule.view.%s", "able.module")]], dt.itemName, dt.itemName)
     end
 
     table.insert(pstrArr, "local listParams = {")
     table.insert(pstrArr, strFmt_("\tparent = %s,", _setParentNm(dt.parent)))
     table.insert(pstrArr, strFmt_("\tviewRect = cc.rect(%s, %s, %s, %s),", x, y, w, h))
     table.insert(pstrArr, strFmt_("\tisDebug = %s,", "true"))
-    
+
     if dt.itemName then
         table.insert(pstrArr, strFmt_("\tcellClass = %s,", dt.itemName))
     end
 
     if dt.itemH then
-        table.insert(pstrArr, strFmt_("\titemSize = cc.size(%s,%s),", w, dt.itemH))
+        table.insert(pstrArr, strFmt_("\titemSize = cc.size(%s, %s),", w, dt.itemH))
     end
 
     table.insert(pstrArr, "}\n")
 
-    table.insert(pstrArr, strFmt_("local listview=UIUtil:createListview(%s, %s)", "{len=3}", "listParams"))
+    table.insert(pstrArr, strFmt_("local listview = UIUtil:createListview(%s, %s)", "{len=3}", "listParams"))
     table.insert(pstrArr, "listview:reload()")
 
     return table.concat(pstrArr, br)
@@ -176,4 +194,16 @@ end
 --     return ""
 -- end 
 
-return generator
+
+function generator.genCode(v, result)
+    local genCodeFun = generator["gen_" .. v.uitype]
+    if not genCodeFun then
+        print(v.name , "invalid uitype: ", v.uitype)
+        return ''
+    end
+
+    result = result .. (genCodeFun(v))
+    result = result .. "\n" .. br
+    return result
+end
+

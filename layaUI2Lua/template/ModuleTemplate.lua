@@ -28,6 +28,9 @@ end
 -- 
 function Replace_Name:initUI()
     self:autoUI()
+	
+	-- 在下面写你的ui代码
+
 end
 
 -- 请勿手动修改autoUI内容 (自动生成的，可能被替换)
