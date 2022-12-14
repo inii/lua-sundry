@@ -15,7 +15,9 @@ if not fileName then
     return
 end
 
-local kit = require("kit")
+package.path = "src/?.lua;" --.. package.path;
+require("config_path")
+require("kit")
 local lfs = require("lfs")
 
 
@@ -82,6 +84,6 @@ end
 
 
 
-copyLuaTemplate()
-copyUITemplate()
--- copyRes()
+-- copyLuaTemplate()
+-- copyUITemplate()
+copyRes()

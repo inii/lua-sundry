@@ -83,6 +83,40 @@ function getImageSize(url)
     return img:sizeXY()
 end
 
+
+local function _getRect(node)
+    local x, y = node:getPosition()
+    local an = node:getAnchorPoint()
+    local sz = node:getContentSize()
+    x, y = x - an.x * sz.width, y - an.y * sz.height
+
+    return cc.rect(x, y, sz.width, sz.height)
+end
+
+function getBoundingBox(node)
+    local rect, boundingBox
+    for k, ch in pairs(node:getChildren()) do
+        if ch:isVisible() then
+            rect = getBoundingBox(ch)
+            if rect.width > 0 and rect.height > 0 then
+                boundingBox = boundingBox and cc.rectUnion(rect, boundingBox) or rect
+            end
+        end
+    end
+
+    rect = _getRect(node)
+    if rect.width > 0 and rect.height > 0 then
+        if boundingBox then
+            boundingBox.x = boundingBox.x + rect.x  
+            boundingBox.y = boundingBox.y + rect.y  
+        end
+
+        boundingBox = boundingBox and cc.rectUnion(rect, boundingBox) or rect
+    end
+
+    return boundingBox
+end
+
 -- 处理目录下的所有文件
 function handFileInDir(path, handler)
     local url, attr

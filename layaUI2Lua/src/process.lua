@@ -59,25 +59,24 @@ local function formatElement(tab)
     tab.props.x, tab.props.y = 0, 0  -- set xy in code.
 
 
-    local rst = {}
+    local rstArr, rstTab = {}, {}
     local function format_(v)
         for k, prop in pairs(v.props or {}) do
             v[k] = prop
         end
+        v.x = v.props and v.props.x or 0 
+        v.y = v.props and v.props.y or 0 
 
         if v.var then
             if v.innerHTML or v.text then
                 v.text = _text2LangKey(v.innerHTML or v.text)   
             end
 
-            if v.var == "imgTitle" then
-                print(v)
-            end
-
-            v.parent = rst[v.nodeParent]
+            v.parent = rstTab[v.nodeParent]
             local struct = uiStruct.createStruct(v)
             if struct then
-                rst[v.compId] = struct
+                table.insert(rstArr, struct)
+                rstTab[v.compId] = struct
             end
         else
             print(v.label, "no named [var] in LayaAir" .. (v.type or ""))
@@ -91,22 +90,20 @@ local function formatElement(tab)
     end
 
     format_(tab)
-    return rst
+    return rstArr
 end
 
 -- 得到lua代码的字符串
 local generator = require("generator")
 function ui2CodeStr(uiUrl)
-    -- print("uiUrl:", uiUrl)
     local str = kit.readFile2Str(uiUrl)
+
     local elements = json.decode(str)
     elements = formatElement(elements)
 
     local names, codes, strCode = {}, {} -- "\t"
-    for k, v in pairs(elements) do
-        if not v.uitype then
-            print("no uitype in node", v.name)
-        end
+    for _, v in ipairs(elements) do
+        assert(v.uitype, (v.name or v.var or v.type) .. "no uitype in node")
 
         strCode = generator.genCode(v)
         if strCode then
@@ -125,7 +122,7 @@ function replaceCodeUI(codeUrl, uiUrl)
         assert(codeStr, "not get code string")
 
         local rawCodeStr = kit.readFile2Str(codeUrl)
-        codeStr = strFmt_("function %%1:autoUI(root)\n%s\nend", codeStr)
+        codeStr = strFmt_("function %%1:autoUI(root, x, y)\n%s\nend", codeStr)
         codeStr = string.gsub(rawCodeStr, "function[%s]+([^%s]+):autoUI(.-)end", codeStr)
         
         -- assert(codeStr, "raw lua file no exist function [autoUI], can't replace it.")

@@ -1,31 +1,32 @@
 module(..., package.seeall)
 
 local function _getXY(dt)
-    if not dt then
-        print("not prop")
-    end
-
     local x, y = dt.x or 0, dt.y or 0
-    if x == 0 then
-        print(dt.var .. " x no assign")
-    end
-    if y == 0 then
-        print(dt.var .. " y no assign")
-    end
+    -- if x == 0 then
+    --     print(dt.var .. " x no assign")
+    -- end
+    -- if y == 0 then
+    --     print(dt.var .. " y no assign")
+    -- end
+
+    local ax, ay = dt.anchorX or 0, dt.anchorY or 0
+    ay = 1 - ay
 
     local parent = dt.parent
     if (parent and parent.height) then
         y = parent.height - y
     end
 
-    return x, y
+    return ax, ay, x, y
 end
 
 local function _getWH(dt)
     local w, h = dt.width, dt.height
     local url = dt.skin
     if not url or url == "" then
-        print((dt.var or dt.type), " not url")
+        if dt.type == "Image" then
+            print((dt.var or dt.type), " not url")
+        end
         return w or 0, h or 0
     end
 
@@ -49,7 +50,9 @@ local function _getItem(v)
     local tab = json.decode(kit.readFile2Str(url))
 
     local props = tab and tab.props
-    if not props then return end
+    if not props then
+        return
+    end
 
     local moduleName, itemName = string.match(child.source, "^(.+)/([^/]+)%.ui$")
     return moduleName, itemName, props.width, props.height
@@ -63,14 +66,14 @@ local NodeStruct = {
             return
         end
 
-        local x, y = _getXY(raw)
+        local ax, ay, x, y = _getXY(raw)
         local w, h = _getWH(raw)
 
         return {
             x = x,
             y = y,
-            ax = raw.anchorX or 0,
-            ay = raw.anchorY or 1,
+            ax = ax,
+            ay = ay,
             width = w,
             height = h,
             name = raw.var,
@@ -107,6 +110,7 @@ local LabStruct = {
         node.fontSize = raw.fontSize or 18
         node.color = raw.color or "#ffffff"
         node.text = raw.text
+        node.align = raw.align
 
         return node
     end
@@ -115,13 +119,25 @@ local LabStruct = {
 local ListStruct = {
     new = function(uitype, raw)
         local node = NodeStruct.new(uitype, raw)
+        node.scrollX = raw.repeatX
+        node.scrollY = raw.repeatY
 
         --  listview item 
         local mNm, nm, w, h = _getItem(raw)
-        node.moduleName = mNm 
-        node.itemName = nm 
+        node.moduleName = mNm
+        node.itemName = nm
         node.itemW = w
         node.itemH = h
+
+        return node
+    end
+}
+
+local ScrollStruct = {
+    new = function(uitype, raw)
+        local node = NodeStruct.new(uitype, raw)
+        node.scrollX = raw.hScrollBarSkin
+        node.scrollY = raw.vScrollBarSkin
 
         return node
     end
@@ -133,7 +149,8 @@ UITypes = {
     btn = ImgStruct,
     lab = LabStruct,
     rich = LabStruct,
-    lsv = ListStruct
+    lsv = ListStruct, -- listview
+    scv = ScrollStruct -- scrollview 
 }
 
 function createStruct(v)
