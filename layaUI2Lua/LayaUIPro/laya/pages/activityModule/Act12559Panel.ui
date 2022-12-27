@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":8,
-    "selecteID":18,
+    "selectedBox":1,
+    "selecteID":14,
     "props":{"width":640,"sceneColor":"#000000","height":785},
     "nodeParent":-1,
     "label":"View",
@@ -15,9 +15,9 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":5,"x":10,"width":620,"var":"imgBgN","skin":"image/common2/input_bg.png","sizeGrid":"9,9,7,9","height":776},
+            "props":{"y":5,"x":10,"width":620,"var":"imgBg","skin":"image/common2/input_bg.png","sizeGrid":"9,9,7,9","height":776},
             "nodeParent":1,
-            "label":"Image(imgBgN)",
+            "label":"Image(imgBg)",
             "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
@@ -32,7 +32,7 @@
             "props":{"y":5,"x":11,"var":"imgBanner","skin":"image/activityCore/12555Banner.png"},
             "nodeParent":1,
             "label":"Image(imgBanner)",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
@@ -44,14 +44,13 @@
                     "props":{"y":0,"x":0,"var":"imgTimeBgN","skin":"image/activityCore/img_timeBg5.png"},
                     "nodeParent":8,
                     "label":"Image(imgTimeBgN)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":2,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":11,"x":5,"var":"labTitleN","text":"活动时间：","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
                             "nodeParent":2,
@@ -64,7 +63,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":11,"x":105,"var":"richTime","text":"活动时间：","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
                             "nodeParent":2,
@@ -76,38 +74,12 @@
                             "child":[
                                 ]
                         }]
-                }]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":394,"x":21,"var":"imgBottom","skin":"image/activityCore/12555EggBg.png"},
-            "nodeParent":1,
-            "label":"Image(imgBottom)",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":5,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":73,"x":24,"width":224,"var":"richEggDescN","text":"#ffc956点击鸡蛋可查看奖励内容","height":20,"fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0,"align":"left"},
-                    "nodeParent":5,
-                    "label":"Label(richEggDescN)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":10,
-                    "child":[
-                        ]
                 },
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":35,"x":565,"var":"btnTips","skin":"image/activityCore/act_12477_btn_tip.png","anchorY":0.5,"anchorX":0.5},
-                    "nodeParent":5,
+                    "props":{"y":33,"x":579,"var":"btnTips","skin":"image/activityCore/act_12477_btn_tip.png","anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":8,
                     "label":"Image(btnTips)",
                     "isDirectory":false,
                     "isAniNode":true,
@@ -115,33 +87,46 @@
                     "compId":11,
                     "child":[
                         ]
-                },
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":249,"x":20,"width":600,"var":"imgBottom","skin":"image/common2/input_bg.png","sizeGrid":"9,9,7,9","height":523},
+            "nodeParent":1,
+            "label":"Image(imgBottom)",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":5,
+            "child":[
                 {
                     "x":30,
-                    "type":"Image",
-                    "props":{"y":9,"x":17,"var":"imgTitleN","skin":"image/activityCore/12555Title.png"},
+                    "type":"List",
+                    "props":{"y":10,"x":5,"width":590,"var":"lsv","height":503},
                     "nodeParent":5,
-                    "label":"Image(imgTitleN)",
+                    "label":"List(lsv)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":12,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":228,"x":-3,"var":"imgEggHoldN","skin":"image/activityCore/12555EggHold.png"},
-                    "nodeParent":5,
-                    "label":"Image(imgEggHoldN)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":13,
+                    "compId":15,
                     "child":[
                         ]
                 }]
+        },
+        {
+            "x":15,
+            "type":"Tab",
+            "props":{"y":207,"x":27,"var":"tab","space":10,"skin":"comp/tab.png","labels":"label1,label2,label2","direction":"horizontal"},
+            "nodeParent":1,
+            "label":"Tab(tab)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":14,
+            "child":[
+                ]
         }],
     "animations":[
         {

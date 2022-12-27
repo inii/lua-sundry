@@ -22,22 +22,33 @@ end
 
 local function _getWH(dt)
     local w, h = dt.width, dt.height
-    local url = dt.skin
-    if not url or url == "" then
-        if dt.type == "Image" then
-            print((dt.var or dt.type), " not url")
-        end
-        return w or 0, h or 0
+    if dt.type == "Image" then
+        -- local url = dt.skin
+        -- if not url or url == "" then
+        --     print((dt.var or dt.type), " not url")
+        --     return w or 0, h or 0
+        -- end
+
+        -- if not w or not h then
+        --     local resDir = PathCfg.codePorj.res
+        --     local rawW, rawH = kit.getImageSize(resDir .. "/" .. url)
+        --     w = w or rawW
+        --     h = h or rawH
+        -- end
+    elseif dt.type == "Tab" then
+        h = h or 34
     end
 
-    if not w or not h then
-        local resDir = PathCfg.codePorj.res
-        local rawW, rawH = kit.getImageSize(resDir .. "/" .. url)
-        w = w or rawW
-        h = h or rawH
-    end
+    return w or 0, h or 0
+end
 
-    return w, h
+local function _getTextureWH(dt)
+    if not dt.skin then return end
+    
+    local resDir = PathCfg.codePorj.res
+    local tW, tH = kit.getImageSize(resDir .. "/" .. dt.skin)
+
+    return tW, tH
 end
 
 local function _getItem(v)
@@ -77,6 +88,7 @@ local NodeStruct = {
             width = w,
             height = h,
             name = raw.var,
+            alpha = raw.alpha,
             scaleX = raw.scaleX, -- no default value
             scaleY = raw.scaleY,
             rt = raw.rotation, -- no default value
@@ -89,7 +101,11 @@ local NodeStruct = {
 local ImgStruct = {
     new = function(uitype, raw)
         local node = NodeStruct.new(uitype, raw)
-        node.skin = raw.skin -- pic path
+
+        local w, h = _getTextureWH(raw)
+        node.txW = w or 0
+        node.txH = h or 0
+        node.skin = raw.skin          -- pic path
         node.sizeScale9 = raw.sizeGrid -- scale9
 
         return node
@@ -116,11 +132,18 @@ local LabStruct = {
     end
 }
 
+local TabStruct = {
+    new = function(uitype, raw)
+        local node = NodeStruct.new(uitype, raw)
+        return node
+    end
+}
+
 local ListStruct = {
     new = function(uitype, raw)
         local node = NodeStruct.new(uitype, raw)
-        node.scrollX = raw.repeatX
-        node.scrollY = raw.repeatY
+        node.scrollX = raw.repeatX or raw.hScrollBarSkin
+        node.scrollY = raw.repeatY or raw.vScrollBarSkin
 
         --  listview item 
         local mNm, nm, w, h = _getItem(raw)
@@ -149,6 +172,7 @@ UITypes = {
     btn = ImgStruct,
     lab = LabStruct,
     rich = LabStruct,
+    tab = TabStruct, -- 页签
     lsv = ListStruct, -- listview
     scv = ScrollStruct -- scrollview 
 }

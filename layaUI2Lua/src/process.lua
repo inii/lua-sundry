@@ -125,7 +125,6 @@ function replaceCodeUI(codeUrl, uiUrl)
         codeStr = strFmt_("function %%1:autoUI(root, x, y)\n%s\nend", codeStr)
         codeStr = string.gsub(rawCodeStr, "function[%s]+([^%s]+):autoUI(.-)end", codeStr)
         
-        -- assert(codeStr, "raw lua file no exist function [autoUI], can't replace it.")
         kit.writeStr2File(codeUrl, codeStr)
     else
         print("invalid codeUrl:", codeUrl)

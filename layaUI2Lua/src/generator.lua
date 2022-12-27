@@ -19,7 +19,7 @@ function gen_node(dt)
     local x, y = dt.x or 0, dt.y or 0
     if not dt.parent then
         x, y = "x or 0", "y or 0"
-    end 
+    end
 
     local w, h = dt.width or 0, dt.height or 0
     local p = _setParentNm(dt.parent)
@@ -36,9 +36,11 @@ end
 function gen_img(dt)
     local result = {}
 
-    local url = "\"" .. dt.skin .. "\""
+    local url = dt.skin and "\"" .. dt.skin .. "\"" or "nil"
     local x, y = dt.x, dt.y
     local w, h = dt.width, dt.height
+    w = w == 0 and dt.txW or w
+    h = h == 0 and dt.txH or h
 
     local constructArr = {url, x, y}
     local isSca9
@@ -77,6 +79,14 @@ function gen_img(dt)
         table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", ax, ay))
     end
 
+    if not dt.sizeScale9 and w ~= 0 and h ~= 0 and (w ~= dt.txW or h ~= dt.txH) then
+        table.insert(result, strFmt_(":setContentSize(%s, %s)", ax, ay))
+    end
+
+    if dt.alpha then
+        table.insert(result, strFmt_(":setOpacity(%s)", math.floor(dt.alpha*255)))
+    end
+
     return table.concat(result, nt)
 end
 
@@ -86,7 +96,7 @@ function gen_btn(dt)
     if dt.skin then
         table.insert(argTab, "skins = " .. "\"" .. dt.skin .. "\",")
     end
-    
+
     table.insert(argTab, strFmt_("handler = handler(self, self.onBtn%s),", string.sub(dt.name, 4)))
 
     local w, h = dt.width, dt.height
@@ -138,7 +148,11 @@ function gen_rich(dt)
     local pname = _setParentNm(dt.parent)
     table.insert(result, strFmt_(":addTo(%s)", pname))
 
-    local ags = { left = 1, center = 1, right = 1 }
+    local ags = {
+        left = 1,
+        center = 1,
+        right = 1
+    }
     if ags[dt.align] then
         table.insert(result, strFmt_(":setAlignment(\"%s\")", dt.align))
     end
@@ -178,15 +192,15 @@ function gen_lsv(dt)
     local dirStr
     if dt.scrollX and dt.scrollY then
         dirStr = "cc.ui.UIScrollView.DIRECTION_BOTH"
-    elseif dt.scrollY then
-        dirStr = "cc.ui.UIScrollView.DIRECTION_VERTICAL"
-    else
+    elseif dt.scrollX then
         dirStr = "cc.ui.UIScrollView.DIRECTION_HORIZONTAL"
+    else
+        dirStr = "cc.ui.UIScrollView.DIRECTION_VERTICAL"
     end
 
     table.insert(paramArr, strFmt_("direction = %s,", dirStr))
     table.insert(paramArr, strFmt_("viewRect = cc.rect(%s, %s, %s, %s),", x, y, w, h))
-    
+
     table.insert(paramArr, "async = true,")
     table.insert(paramArr, "-- bgColor = cc.c4b(255,110,330,155),")
 
@@ -210,8 +224,7 @@ function gen_lsv2(dt)
 
     local headStr = ""
     if dt.itemName and dt.moduleName then
-        headStr = strFmt_([[local %s = ab.import(".%s.view.%s", "able.module")]], dt.itemName, dt.moduleName,
-            dt.itemName)
+        headStr = strFmt_([[local %s = ab.import(".%s.view.%s", "able.module")]], dt.itemName, dt.moduleName, dt.itemName)
     end
 
     local midArr = {}
@@ -246,9 +259,6 @@ function gen_scv(dt)
 
     -- 坐标转化为锚点(0，0)
     x, y = x - ax * w, y - ay * h
-
-    -- local str0 = strFmt_("local %sC = display.newNode()", dt.name)
-
     local arr2 = {}
     table.insert(arr2, strFmt_("local %s = cc.ui.UIScrollView.new({", dt.name))
 
@@ -270,6 +280,23 @@ function gen_scv(dt)
     local str3 = strFmt_([[:addScrollNode(display.newNode())]], dt.name)
 
     return table.concat({str1, str2, str3}, nt)
+end
+
+function gen_tab(dt)
+    local ax, ay = dt.ax, dt.ay
+    local x, y = dt.x, dt.y
+    local w, h = dt.width, dt.height
+
+    -- 坐标转化为锚点(0，0)
+    x, y = x - ax * w, (y - ay * h)
+    local arr = {}
+    table.insert(arr, strFmt_("local params = self:getMenuParams()"))
+    table.insert(arr, strFmt_("local %s = UIUtil:createUICheckBoxButtonGroup(params)", dt.name))
+
+    table.insert(arr, strFmt_(":setPosition(%s, %s)", x, y))
+    table.insert(arr, strFmt_(":addTo(%s, 99)", _setParentNm(dt.parent)))
+
+    return table.concat(arr, nt)
 end
 
 function genCode(v)
