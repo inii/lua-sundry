@@ -80,7 +80,7 @@ function gen_img(dt)
     end
 
     if not dt.sizeScale9 and w ~= 0 and h ~= 0 and (w ~= dt.txW or h ~= dt.txH) then
-        table.insert(result, strFmt_(":setContentSize(%s, %s)", ax, ay))
+        table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
     end
 
     if dt.alpha then
@@ -100,7 +100,9 @@ function gen_btn(dt)
     table.insert(argTab, strFmt_("handler = handler(self, self.onBtn%s),", string.sub(dt.name, 4)))
 
     local w, h = dt.width, dt.height
-    if w and h and w > 0 and h > 0 then
+    w = w == 0 and dt.txW or w
+    h = h == 0 and dt.txH or h
+    if w > 0 and h > 0 then
         table.insert(argTab, strFmt_("btnSize = {%s, %s},", w, h))
     end
 

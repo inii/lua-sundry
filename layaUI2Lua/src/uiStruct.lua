@@ -13,8 +13,13 @@ local function _getXY(dt)
     ay = 1 - ay
 
     local parent = dt.parent
-    if (parent and parent.height) then
-        y = parent.height - y
+    if parent then
+        local ph = parent.height
+        if parent.skin and ph == 0 then
+            ph = parent.txH
+        end
+
+        y = ph - y
     end
 
     return ax, ay, x, y
