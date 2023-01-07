@@ -30,13 +30,17 @@ function gen_node(dt)
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
 
+    if dt.visible == "false" or dt.visible == false then
+        table.insert(result, ":setVisible(false)")
+    end
+
     return table.concat(result, nt)
 end
 
 function gen_img(dt)
     local result = {}
 
-    local url = dt.skin and "\"" .. dt.skin .. "\"" or "nil"
+    local url = dt.url and "\"" .. dt.url .. "\"" or "nil"
     local x, y = dt.x, dt.y
     local w, h = dt.width, dt.height
     w = w == 0 and dt.txW or w
@@ -44,11 +48,14 @@ function gen_img(dt)
 
     local constructArr = {url, x, y}
     local isSca9
-    if dt.sizeScale9 then
+    if dt.url and dt.sizeScale9 then
         -- 上右下左
         local raw = kit.parse2Num(dt.sizeScale9)
         table.insert(constructArr, strFmt_("cc.size(%s, %s)", w, h))
-        table.insert(constructArr, strFmt_("cc.rect(%s, %s, %s, %s)", raw[4], raw[3], 1, 1))
+
+        local sw = dt.txW - raw[4] - raw[2]
+        local sh = dt.txH - raw[3] - raw[1]
+        table.insert(constructArr, strFmt_("cc.rect(%s, %s, %s, %s)", raw[4], raw[3], sw, sh))
 
         table.insert(result,
             strFmt_("local %s = display.newScale9Sprite(%s)", dt.name, table.concat(constructArr, ", ")))
@@ -79,12 +86,23 @@ function gen_img(dt)
         table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", ax, ay))
     end
 
-    if not dt.sizeScale9 and w ~= 0 and h ~= 0 and (w ~= dt.txW or h ~= dt.txH) then
-        table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
-    end
-
     if dt.alpha then
         table.insert(result, strFmt_(":setOpacity(%s)", math.floor(dt.alpha*255)))
+    end
+
+    if dt.visible == "false" or dt.visible == false then
+        print("dt.visible:", dt.visible)
+        table.insert(result, ":setVisible(false)")
+    end
+
+    if not dt.sizeScale9 and w ~= 0 and h ~= 0 then
+        if (w ~= dt.txW and h ~= dt.txH) then
+            table.insert(result, strFmt_("GameUtil:scaleTo(%s, %s, %s)", dt.name, w, h))
+        elseif w ~= dt.txW and h == dt.txH then
+            table.insert(result, strFmt_("GameUtil:scaleToWidth(%s, %s)", dt.name, w))
+        elseif w == dt.txW and h ~= dt.txH then              
+            table.insert(result, strFmt_("GameUtil:scaleToHeight(%s, %s)", dt.name, h))
+        end
     end
 
     return table.concat(result, nt)
@@ -93,11 +111,12 @@ end
 function gen_btn(dt)
     local argTab = {strFmt_("local %s = display.newUIPushButton({", dt.name)}
 
-    if dt.skin then
-        table.insert(argTab, "skins = " .. "\"" .. dt.skin .. "\",")
+    if dt.url then
+        table.insert(argTab, "skins = " .. "\"" .. dt.url .. "\",")
     end
 
-    table.insert(argTab, strFmt_("handler = handler(self, self.onBtn%s),", string.sub(dt.name, 4)))
+    local suffix = string.gsub(dt.name, "N$", "") 
+    table.insert(argTab, strFmt_("handler = handler(self, self.onBtn%s),", string.sub(suffix, 4)))
 
     local w, h = dt.width, dt.height
     w = w == 0 and dt.txW or w
@@ -110,7 +129,12 @@ function gen_btn(dt)
     table.insert(argTab, strFmt_("x = %s, y = %s,", x, y))
     table.insert(argTab, strFmt_("parent = %s,", _setParentNm(dt.parent)))
 
-    return table.concat(argTab, "\n\t\t") .. "\n\t})"
+    local result = table.concat(argTab, "\n\t\t") .. "\n\t})"
+    if dt.visible == "false" or dt.visible == false then
+        result = result .. "\n\t" .. ":setVisible(false)"
+    end
+
+    return result
 end
 
 function gen_lab(dt)
@@ -140,7 +164,10 @@ function gen_lab(dt)
     table.insert(result, strFmt_(":addTo(%s)", pname))
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":pos(%s, %s)", dt.x, dt.y))
-
+    
+    if dt.visible == "false" or dt.visible == false then
+        table.insert(result, ":setVisible(false)")
+    end
     return table.concat(result, nt)
 end
 
@@ -172,6 +199,10 @@ function gen_rich(dt)
     local str = dt.text or "\"\""
     if str and str ~= [[""]] then
         table.insert(result, strFmt_(":setString(%s, %s)", str, dt.fontSize))
+    end
+
+    if dt.visible == "false" or dt.visible == false then
+        table.insert(result, ":setVisible(false)")
     end
 
     return table.concat(result, nt)
@@ -208,6 +239,10 @@ function gen_lsv(dt)
 
     local str1 = table.concat(paramArr, nt2) .. "\n\t})"
     local str2 = strFmt_(":addTo(%s)", _setParentNm(dt.parent))
+    if dt.visible == "false" or dt.visible == false then
+        str2 = str2 .. nt .. ":setVisible(false)"
+    end
+    
     local str3 = strFmt_([[%s:setDelegate(handler(self, self.%sDelegate))]], dt.name, dt.name)
 
     local arr = str0 and {str0, str1, str2, str3} or {str1, str2, str3}
@@ -279,6 +314,10 @@ function gen_scv(dt)
     local str1 = table.concat(arr2, nt2) .. "\n\t})"
 
     local str2 = strFmt_(":addTo(%s)", _setParentNm(dt.parent))
+    if dt.visible == "false" or dt.visible == false then
+        str2 = str2 .. nt .. ":setVisible(false)"
+    end
+
     local str3 = strFmt_([[:addScrollNode(display.newNode())]], dt.name)
 
     return table.concat({str1, str2, str3}, nt)

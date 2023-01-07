@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":0,"x":0,"width":590,"var":"imgBg","skin":"image/activity/listBg.png","sizeGrid":"45,25,45,25","height":130},
+            "props":{"y":0,"x":0,"width":590,"var":"imgBg","skin":"image/activity/listBg.png","sizeGrid":"52,34,45,25","height":130},
             "nodeParent":1,
             "label":"Image(imgBg)",
             "isOpen":false,
@@ -43,15 +43,16 @@
             "props":{"y":54,"x":504,"width":120,"var":"btnBuy","skin":"image/common2/btn_yellow.png","sizeGrid":"8,4,4,1","height":56,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(btnBuy)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":3,
             "child":[
                 {
+                    "x":30,
                     "type":"Label",
-                    "props":{"y":24,"x":60,"var":"labBtnBuy","text":"领取","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":28,"x":60,"var":"labBtnBuy","text":"领取","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":3,
                     "label":"Label(labBtnBuy)",
                     "isDirectory":false,

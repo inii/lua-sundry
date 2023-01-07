@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":6,
+    "selecteID":16,
     "props":{"width":150,"sceneColor":"#000000","height":190},
     "nodeParent":-1,
     "label":"View",
@@ -40,7 +40,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":10,"x":135,"var":"labAreaName","text":"1号海区","fontSize":16,"color":"#ffffff","bold":true,"anchorX":1,"align":"center"},
+                    "props":{"y":18,"x":135,"var":"labAreaName","text":"1号海区","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":1,"align":"center"},
                     "nodeParent":2,
                     "label":"Label(labAreaName)",
                     "isDirectory":false,
@@ -104,6 +104,45 @@
                         ]
                 }],
             "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":2,"x":-3,"var":"imgSelected","skin":"image/mechurer/imgDecoration/selected.png"},
+            "nodeParent":1,
+            "label":"Image(imgSelected)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":14,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":65,"x":114,"var":"labNew","text":"新！","fontSize":24,"color":"#e2be3a","anchorY":0.5,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Label(labNew)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":15,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":3,"x":4,"visible":false,"var":"imgPickable","skin":"image/activityCore/img12438Bg_canCollect.png"},
+            "nodeParent":1,
+            "label":"Image(imgPickable)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":16,
+            "child":[
+                ]
         }],
     "animations":[
         {

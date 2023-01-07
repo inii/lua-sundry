@@ -20,6 +20,17 @@ local function _getXY(dt)
         end
 
         y = ph - y
+
+        if parent.uitype == "btn" then
+            local pw = parent.width 
+            pw = pw == 0 and dt.txW or pw
+
+            local ph = parent.height 
+            ph = ph == 0 and dt.txH or ph
+           
+            x = math.floor(x - pw/2)
+            y = math.floor(y - ph/2)
+        end
     end
 
     return ax, ay, x, y
@@ -50,10 +61,15 @@ end
 local function _getTextureWH(dt)
     if not dt.skin then return end
     
-    local resDir = PathCfg.codePorj.res
+    local resDir = PathCfg.uiProj.res
     local tW, tH = kit.getImageSize(resDir .. "/" .. dt.skin)
 
     return tW, tH
+end
+
+local function _getImgUrl(dt)
+    if not dt.skin then return end
+    return string.gsub(dt.skin, "ui/", "#")
 end
 
 local function _getItem(v)
@@ -84,7 +100,7 @@ local NodeStruct = {
 
         local ax, ay, x, y = _getXY(raw)
         local w, h = _getWH(raw)
-
+        
         return {
             x = x,
             y = y,
@@ -94,6 +110,7 @@ local NodeStruct = {
             height = h,
             name = raw.var,
             alpha = raw.alpha,
+            visible = raw.visible,
             scaleX = raw.scaleX, -- no default value
             scaleY = raw.scaleY,
             rt = raw.rotation, -- no default value
@@ -110,7 +127,8 @@ local ImgStruct = {
         local w, h = _getTextureWH(raw)
         node.txW = w or 0
         node.txH = h or 0
-        node.skin = raw.skin          -- pic path
+        node.skin = raw.skin       -- ui pic path
+        node.url = _getImgUrl(raw) -- code pic path
         node.sizeScale9 = raw.sizeGrid -- scale9
 
         return node
@@ -120,12 +138,12 @@ local ImgStruct = {
 local LabStruct = {
     new = function(uitype, raw)
         local node = NodeStruct.new(uitype, raw)
-        if raw.parent.uitype == "btn" then
-            node.ax = 0.5
-            node.ay = 0.5
-            node.x = 0
-            node.y = 0
-        end
+        -- if raw.parent.uitype == "btn" then
+        --     node.ax = 0.5
+        --     node.ay = 0.5
+        --     node.x = 0
+        --     node.y = 0
+        -- end
 
         node.font = raw.font
         node.fontSize = raw.fontSize or 18

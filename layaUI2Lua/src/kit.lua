@@ -15,7 +15,7 @@ function excute(cmdStr, path1, path2)
     end
     
     local cmdStr = table.concat(tab, " ") 
-    print("excute cmd:", cmdStr)
+    -- print("excute cmd:", cmdStr)
     os.execute(cmdStr)
 end
 
@@ -67,18 +67,16 @@ function getImageSize(url)
     local img
     local subfix = string.sub(url, -3, -1)
     if subfix == "png" then
-        print("create img with png", url)
+        -- print("create img with png", url)
         img = gd.createFromPng(url)
     elseif subfix == "jpg" then
-        print("create img with jpg", url)
+        -- print("create img with jpg", url)
         img = gd.createFromJpeg(url)
     else
         print("warn: unknown type when getImageSize")
     end
 
-    if not img then
-        print("create image failed.", url)
-    end
+    assert(img, "create image failed. url:" .. (url or ""))
 
     return img:sizeXY()
 end

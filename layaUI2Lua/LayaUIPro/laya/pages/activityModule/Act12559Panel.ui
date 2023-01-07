@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":14,
+    "selectedBox":5,
+    "selecteID":5,
     "props":{"width":640,"sceneColor":"#000000","height":785},
     "nodeParent":-1,
     "label":"View",
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":5,"x":10,"width":620,"var":"imgBg","skin":"image/common2/input_bg.png","sizeGrid":"9,9,7,9","height":776},
+            "props":{"y":5,"x":10,"width":620,"var":"imgBg","skin":"image/common2/input_bg.png","sizeGrid":"25,26,7,9","height":776},
             "nodeParent":1,
             "label":"Image(imgBg)",
             "isOpen":true,
@@ -39,7 +39,6 @@
             "compId":8,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":0,"x":0,"var":"imgTimeBgN","skin":"image/activityCore/img_timeBg5.png"},
                     "nodeParent":8,
@@ -76,7 +75,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":33,"x":579,"var":"btnTips","skin":"image/activityCore/act_12477_btn_tip.png","anchorY":0.5,"anchorX":0.5},
                     "nodeParent":8,
@@ -92,7 +90,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":249,"x":20,"width":600,"var":"imgBottom","skin":"image/common2/input_bg.png","sizeGrid":"9,9,7,9","height":523},
+            "props":{"y":249,"x":20,"width":600,"var":"imgBottom","skin":"image/common2/input_bg.png","sizeGrid":"25,26,7,9","height":523},
             "nodeParent":1,
             "label":"Image(imgBottom)",
             "isOpen":false,
@@ -102,7 +100,6 @@
             "compId":5,
             "child":[
                 {
-                    "x":30,
                     "type":"List",
                     "props":{"y":10,"x":5,"width":590,"var":"lsv","height":503},
                     "nodeParent":5,

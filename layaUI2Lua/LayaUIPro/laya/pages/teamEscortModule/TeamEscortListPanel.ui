@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":6,
-    "selecteID":7,
+    "selectedBox":29,
+    "selecteID":41,
     "props":{"width":640,"sceneColor":"#000000","height":820},
     "nodeParent":-1,
     "label":"View",
@@ -27,56 +27,30 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":16,"x":144,"width":288,"var":"imgTimeBgN","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":32,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":30,"x":534,"width":200,"var":"imgBarBg","skin":"image/teamFortress/progress_bg.png","height":12,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":4,
-                    "label":"Image(imgTimeBgN)",
+                    "label":"Image(imgBarBg)",
                     "isOpen":true,
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":3,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":16,"x":8,"var":"labActTime","text":"活动时间：","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"align":"center"},
-                    "nodeParent":4,
-                    "label":"Label(labActTime)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":5,
+                    "compId":6,
                     "child":[
                         ]
                 },
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":26,"x":534,"width":200,"var":"imgBarBg","skin":"image/teamFortress/progress_bg.png","height":12,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":30,"x":434,"width":200,"var":"imgBar","skin":"image/teamFortress/progress_green.png","height":11,"anchorY":0.5,"anchorX":0},
                     "nodeParent":4,
-                    "label":"Image(imgBarBg)",
+                    "label":"Image(imgBar)",
                     "isOpen":true,
-                    "isDirectory":true,
+                    "isDirectory":false,
                     "isAniNode":true,
-                    "hasChild":true,
-                    "compId":6,
+                    "hasChild":false,
+                    "compId":7,
                     "child":[
-                        {
-                            "x":45,
-                            "type":"Image",
-                            "props":{"y":6,"x":100,"width":200,"var":"imgBar","skin":"image/teamFortress/progress_green.png","height":11,"anchorY":0.5,"anchorX":0.5},
-                            "nodeParent":6,
-                            "label":"Image(imgBar)",
-                            "isOpen":true,
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":7,
-                            "child":[
-                                ]
-                        }]
+                        ]
                 },
                 {
                     "x":30,
@@ -149,9 +123,9 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":578,"x":320,"width":640,"var":"imgEscortBg","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":38,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":581,"x":320,"width":640,"var":"imgEscortBgN","skin":"image/common2/color_black.png","sizeGrid":"0,0,0,0","height":38,"anchorY":0.5,"anchorX":0.5,"alpha":0.6},
                     "nodeParent":10,
-                    "label":"Image(imgEscortBg)",
+                    "label":"Image(imgEscortBgN)",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
@@ -161,9 +135,9 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":10,"x":224,"var":"richEscort","text":"巡逻海区次数：","fontSize":18,"color":"#ffffff","bold":true,"align":"center"},
+                            "props":{"y":18,"x":204,"var":"richEscortTimes","text":"巡逻海区次数：","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5},
                             "nodeParent":11,
-                            "label":"Label(richEscort)",
+                            "label":"Label(richEscortTimes)",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
@@ -174,7 +148,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":14,"x":384,"var":"labEscortTime","text":"00：00：00","fontSize":16,"color":"#ffffff","bold":true,"align":"center"},
+                            "props":{"y":19,"x":384,"var":"labEscortTime","text":"00：00：00","fontSize":18,"color":"#ffffff","anchorY":0.5,"align":"center"},
                             "nodeParent":11,
                             "label":"Label(labEscortTime)",
                             "isDirectory":false,
@@ -187,7 +161,7 @@
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"y":20,"x":199,"width":30,"var":"btnEscortTips","skin":"image/activityCore/act_12477_btn_tip.png","height":30,"anchorY":0.5,"anchorX":0.5},
+                            "props":{"y":20,"x":179,"width":30,"var":"btnEscortTips","skin":"ui/common/btn_tip.png","height":30,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":11,
                             "label":"Image(btnEscortTips)",
                             "isDirectory":false,
@@ -238,7 +212,7 @@
                             "child":[
                                 {
                                     "type":"Label",
-                                    "props":{"y":13,"x":26,"var":"labBtnEscort","text":"巡逻1号海区","fontSize":24,"color":"#ffffff","bold":true,"align":"center"},
+                                    "props":{"y":25,"x":95,"var":"labBtnEscort","text":"巡逻1号海区","fontSize":24,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                                     "nodeParent":19,
                                     "label":"Label(labBtnEscort)",
                                     "isDirectory":false,
@@ -264,7 +238,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":8,"x":320,"width":610,"var":"richEscortDesc","text":"巡逻说明","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                            "props":{"y":0,"x":320,"width":610,"var":"richEscortDesc","text":"巡逻说明","fontSize":16,"color":"#ffffff","bold":true,"anchorX":0.5},
                             "nodeParent":28,
                             "label":"Label(richEscortDesc)",
                             "isDirectory":false,
@@ -294,18 +268,17 @@
                             "props":{"y":137,"x":541,"width":130,"var":"btnAppeal","skin":"image/common2/btn_blue.png","height":50,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":29,
                             "label":"Image(btnAppeal)",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":22,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Label",
-                                    "props":{"y":13,"x":40,"var":"labAppeal","text":"求助","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"align":"center"},
+                                    "props":{"y":25,"x":65,"var":"labBtnAppeal","text":"求助","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                                     "nodeParent":22,
-                                    "label":"Label(labAppeal)",
+                                    "label":"Label(labBtnAppeal)",
                                     "isDirectory":false,
                                     "isAniNode":true,
                                     "hasChild":false,
@@ -320,25 +293,25 @@
                             "props":{"y":136,"x":369,"width":130,"var":"btnGo","skin":"image/common2/btn_yellow.png","height":50,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":29,
                             "label":"Image(btnGo)",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":31,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Label",
-                                    "props":{"y":13,"x":40,"var":"btnLabGo","text":"前往","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"align":"center"},
+                                    "props":{"y":25,"x":65,"var":"labBtnGo","text":"前往","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                                     "nodeParent":31,
-                                    "label":"Label(btnLabGo)",
+                                    "label":"Label(labBtnGo)",
                                     "isDirectory":false,
                                     "isAniNode":true,
                                     "hasChild":false,
                                     "compId":32,
                                     "child":[
                                         ]
-                                }]
+                                }],
+                            "$HIDDEN":false
                         },
                         {
                             "x":45,
@@ -346,37 +319,40 @@
                             "props":{"y":61,"x":320,"width":330,"var":"imgHpBg","skin":"image/teamFortress/progress_bg.png","height":15,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":29,
                             "label":"Image(imgHpBg)",
-                            "isOpen":false,
-                            "isDirectory":true,
+                            "isOpen":true,
+                            "isDirectory":false,
                             "isAniNode":true,
-                            "hasChild":true,
+                            "hasChild":false,
                             "compId":35,
                             "child":[
-                                {
-                                    "type":"Image",
-                                    "props":{"y":7,"x":165,"width":330,"var":"imgHpBar","skin":"image/teamFortress/progress_red.png","height":14,"anchorY":0.5,"anchorX":0.5},
-                                    "nodeParent":35,
-                                    "label":"Image(imgHpBar)",
-                                    "isOpen":true,
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":37,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "type":"Label",
-                                    "props":{"y":7,"x":165,"var":"labHpValue","text":"999999","fontSize":14,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
-                                    "nodeParent":35,
-                                    "label":"Label(labHpValue)",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":36,
-                                    "child":[
-                                        ]
-                                }]
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":61,"x":155,"width":330,"var":"imgHpBar","skin":"image/teamFortress/progress_red.png","height":14,"anchorY":0.5,"anchorX":0},
+                            "nodeParent":29,
+                            "label":"Image(imgHpBar)",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":37,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "props":{"y":61,"x":320,"var":"labHpValue","text":"999999","fontSize":14,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                            "nodeParent":29,
+                            "label":"Label(labHpValue)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":36,
+                            "child":[
+                                ]
                         },
                         {
                             "x":45,
@@ -395,7 +371,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":8,"x":320,"width":610,"var":"richAttackDesc","text":"攻击说明","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                            "props":{"y":0,"x":320,"width":610,"var":"richAttackDesc","text":"攻击说明","fontSize":16,"color":"#ffffff","bold":true,"anchorX":0.5},
                             "nodeParent":29,
                             "label":"Label(richAttackDesc)",
                             "isDirectory":false,
@@ -434,7 +410,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":89,"x":489,"var":"labDisappearTime","text":"请求消失时间：00:00:00","fontSize":14,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                            "props":{"y":89,"x":592,"var":"labDisappearTime","text":"请求消失时间：00:00:00","fontSize":14,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":1,"align":"center"},
                             "nodeParent":29,
                             "label":"Label(labDisappearTime)",
                             "isDirectory":false,
@@ -443,10 +419,36 @@
                             "compId":41,
                             "child":[
                                 ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Box",
+                            "props":{"y":58,"x":320,"var":"nodeMember"},
+                            "nodeParent":29,
+                            "label":"Box(nodeMember)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":43,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "props":{"y":104,"x":547,"visible":false,"var":"richJoinMember","text":"奖励预览","fontSize":18,"color":"#25c832","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                            "nodeParent":29,
+                            "label":"Label(richJoinMember)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":44,
+                            "child":[
+                                ]
                         }],
                     "$HIDDEN":false
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         }],
     "animations":[
         {
