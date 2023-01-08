@@ -113,7 +113,7 @@ local NodeStruct = {
             visible = raw.visible,
             scaleX = raw.scaleX, -- no default value
             scaleY = raw.scaleY,
-            rt = raw.rotation, -- no default value
+            rotation = raw.rotation, -- no default value
             parent = raw.parent,
             uitype = uitype
         }
@@ -147,9 +147,12 @@ local LabStruct = {
 
         node.font = raw.font
         node.fontSize = raw.fontSize or 18
+        node.outlineColor = raw.strokeColor
+        node.outline = raw.stroke
         node.color = raw.color or "#ffffff"
         node.text = raw.text
         node.align = raw.align
+        
 
         return node
     end

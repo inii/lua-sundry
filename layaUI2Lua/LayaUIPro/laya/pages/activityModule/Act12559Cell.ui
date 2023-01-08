@@ -2,8 +2,8 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":2,
-    "props":{"width":590,"sceneColor":"#000000","height":135},
+    "selecteID":10,
+    "props":{"width":607,"sceneColor":"#000000","height":153},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,18 +15,19 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":0,"x":0,"width":590,"var":"imgBg","skin":"image/activity/listBg.png","sizeGrid":"52,34,45,25","height":130},
+            "props":{"y":1,"x":0,"var":"imgBg","skin":"image/activityCore/12559CellBg.png"},
             "nodeParent":1,
             "label":"Image(imgBg)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":2,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
-                    "props":{"y":0,"x":0,"width":310,"var":"imgTitleBgN","skin":"image/activity/label_bg1.png","height":31},
+                    "props":{"y":14,"x":107,"var":"imgTitleBgN","skin":"image/activityCore/12559CellTitleBg.png"},
                     "nodeParent":2,
                     "label":"Image(imgTitleBgN)",
                     "isDirectory":false,
@@ -40,7 +41,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":54,"x":504,"width":120,"var":"btnBuy","skin":"image/common2/btn_yellow.png","sizeGrid":"8,4,4,1","height":56,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":108,"x":508,"width":130,"var":"btnBuy","skin":"image/common2/btn_yellow.png","sizeGrid":"8,4,4,1","height":42,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(btnBuy)",
             "isOpen":true,
@@ -52,7 +53,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":28,"x":60,"var":"labBtnBuy","text":"领取","fontSize":24,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":21,"x":65,"var":"labBtnBuy","text":"领取","fontSize":22,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":3,
                     "label":"Label(labBtnBuy)",
                     "isDirectory":false,
@@ -67,7 +68,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":5,"x":11,"var":"labTitle","valign":"middle","fontSize":20,"color":"#ffffff"},
+            "props":{"y":31,"x":114,"var":"labTitle","valign":"middle","fontSize":24,"color":"#282651","anchorY":0.5,"anchorX":0},
             "nodeParent":1,
             "label":"Label(labTitle)",
             "isDirectory":false,
@@ -80,13 +81,39 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":102,"x":504,"width":120,"var":"richTimes","valign":"middle","height":20,"fontSize":20,"color":"#ffffff","anchorY":0.5,"anchorX":0.5,"align":"center"},
+            "props":{"y":66,"x":504,"width":120,"var":"richTimes","valign":"middle","height":20,"fontSize":20,"color":"#ffffff","anchorY":0.5,"anchorX":0.5,"align":"center"},
             "nodeParent":1,
             "label":"Label(richTimes)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":11,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":61,"x":39,"var":"labDiscount","valign":"middle","text":"3000","strokeColor":"#211b4e","stroke":1,"rotation":-10,"fontSize":30,"color":"#fdd758","bold":true,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Label(labDiscount)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":12,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":94,"x":42,"var":"labPercentN","valign":"middle","text":"%","strokeColor":"#211b4e","stroke":1,"rotation":-10,"fontSize":36,"color":"#fdd758","bold":true,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Label(labPercentN)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":13,
             "child":[
                 ]
         }],

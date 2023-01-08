@@ -157,6 +157,11 @@ function gen_lab(dt)
 
         table.insert(argTab, "color = color")
     end
+    
+    if dt.outlineColor then
+        table.insert(result, strFmt_("local outcolor = GameUtil:parseColor3b(\"%s\")", dt.outlineColor))
+        -- table.insert(argTab, "outlineColor = outcolor")
+    end
 
     table.insert(result, table.concat(argTab, ", ") .. "})")
 
@@ -164,7 +169,14 @@ function gen_lab(dt)
     table.insert(result, strFmt_(":addTo(%s)", pname))
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":pos(%s, %s)", dt.x, dt.y))
-    
+    if dt.rotation then
+        table.insert(result, strFmt_(":setRotation(%s)", dt.rotation))
+    end
+
+    if dt.outlineColor then
+        table.insert(result, strFmt_(":enableOutline(%s, %s)", "outcolor", dt.outline or 1))
+    end
+
     if dt.visible == "false" or dt.visible == false then
         table.insert(result, ":setVisible(false)")
     end
