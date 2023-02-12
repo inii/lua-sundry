@@ -18,7 +18,7 @@ local lfs = require("lfs")
 local json = require("json")
 
 -- local md5 = require("md5")
-local ResDir = PathCfg.codePorj.res
+local ResDir = PathCfg.codeProj.res
 
 local strFmt_ = string.format
 local dump = kit.dump
@@ -187,7 +187,7 @@ function exportOne(dirName, fileName)
     local uiUrl = table.concat(tab, "/")
 
     if kit.file_exists(uiUrl) then
-        local dirPart = PathCfg.codePorj.module .. dirName
+        local dirPart = PathCfg.codeProj.module .. dirName
         local codeUrl = getCodeUrl(dirPart, fileName)
         replaceCodeUI(codeUrl, uiUrl)
     else
@@ -199,7 +199,7 @@ function exportAll()
     local uiPrefix = "^" .. PathCfg.uiProj.pages
     local uiSuffix = ".ui$"
     kit.handFileInDir(PathCfg.uiProj.pages, function(uiUrl, file)
-        local dirPart = string.gsub(uiUrl, uiPrefix, PathCfg.codePorj.module)
+        local dirPart = string.gsub(uiUrl, uiPrefix, PathCfg.codeProj.module)
         dirPart = string.gsub(dirPart, "/" .. file, "")
 
         local codeUrl = getCodeUrl(dirPart, file)

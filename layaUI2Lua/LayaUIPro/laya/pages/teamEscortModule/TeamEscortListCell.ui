@@ -2,8 +2,8 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":16,
-    "props":{"width":150,"sceneColor":"#000000","height":190},
+    "selecteID":18,
+    "props":{"width":150,"sceneColor":"#000000","height":200},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,32 +15,42 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":95,"x":75,"width":145,"var":"imgBg1","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":185,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":100,"x":75,"var":"imgBg1","skin":"image/teamEscort/cardBg.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgBg1)",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":2,
             "child":[
                 {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":80,"x":35,"var":"labEscortable","text":"可巡逻","fontSize":24,"color":"#75fb5e","bold":true,"align":"center"},
+                    "type":"Image",
+                    "props":{"y":103,"x":10,"visible":false,"var":"imgEscortable","skin":"image/teamEscort/patrolable.png"},
                     "nodeParent":2,
-                    "label":"Label(labEscortable)",
-                    "isDirectory":false,
+                    "label":"Image(imgEscortable)",
+                    "isOpen":true,
+                    "isDirectory":true,
                     "isAniNode":true,
-                    "hasChild":false,
-                    "compId":3,
+                    "hasChild":true,
+                    "compId":17,
                     "child":[
-                        ]
+                        {
+                            "type":"Label",
+                            "props":{"y":48,"x":29,"var":"labEscortable","text":"可巡逻","fontSize":20,"color":"#75fb5e","bold":true,"align":"center"},
+                            "nodeParent":17,
+                            "label":"Label(labEscortable)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":3,
+                            "child":[
+                                ]
+                        }]
                 },
                 {
-                    "x":30,
                     "type":"Label",
-                    "props":{"y":18,"x":135,"var":"labAreaName","text":"1号海区","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":1,"align":"center"},
+                    "props":{"y":13,"x":104,"var":"labAreaName","text":"1号海区","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":1,"align":"center"},
                     "nodeParent":2,
                     "label":"Label(labAreaName)",
                     "isDirectory":false,
@@ -50,26 +60,25 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":95,"x":75,"width":145,"var":"imgTaskBg","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":185,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":100,"x":75,"width":145,"var":"imgTaskBg","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":185,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgTaskBg)",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":6,
             "child":[
                 {
-                    "x":30,
                     "type":"Label",
-                    "props":{"y":19,"x":72,"var":"labShipName","text":"救援货轮","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":13,"x":72,"var":"richShipName","text":"救援货轮","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":6,
-                    "label":"Label(labShipName)",
+                    "label":"Label(richShipName)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -78,7 +87,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "props":{"y":160,"x":72,"var":"labPlayerName","text":"我收到的请求","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":6,
@@ -91,7 +99,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":92,"x":72,"var":"imgShipIcon","skin":"image/guide/guide_enemy_ship2.png","anchorY":0.5,"anchorX":0.5},
                     "nodeParent":6,
@@ -108,7 +115,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":2,"x":-3,"var":"imgSelected","skin":"image/mechurer/imgDecoration/selected.png"},
+            "props":{"y":0,"x":-3,"width":156,"var":"imgSelected","skin":"image/teamEscort/imgSelect.png","sizeGrid":"23,28,27,22","height":200},
             "nodeParent":1,
             "label":"Image(imgSelected)",
             "isDirectory":false,
@@ -116,25 +123,13 @@
             "hasChild":false,
             "compId":14,
             "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "props":{"y":65,"x":114,"var":"labNew","text":"新！","fontSize":24,"color":"#e2be3a","anchorY":0.5,"anchorX":0.5},
-            "nodeParent":1,
-            "label":"Label(labNew)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":15,
-            "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":3,"x":4,"visible":false,"var":"imgPickable","skin":"image/activityCore/img12438Bg_canCollect.png"},
+            "props":{"y":7,"x":4,"visible":false,"var":"imgPickable","skin":"image/activityCore/img12438Bg_canCollect.png"},
             "nodeParent":1,
             "label":"Image(imgPickable)",
             "isDirectory":false,
@@ -142,7 +137,22 @@
             "hasChild":false,
             "compId":16,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":54,"x":87,"visible":false,"var":"imgNew","skin":"image/teamEscort/new.png","scaleY":0.8,"scaleX":0.8},
+            "nodeParent":1,
+            "label":"Image(imgNew)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":18,
+            "child":[
+                ],
+            "$HIDDEN":false
         }],
     "animations":[
         {

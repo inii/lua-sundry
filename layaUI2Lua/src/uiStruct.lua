@@ -46,7 +46,7 @@ local function _getWH(dt)
         -- end
 
         -- if not w or not h then
-        --     local resDir = PathCfg.codePorj.res
+        --     local resDir = PathCfg.codeProj.res
         --     local rawW, rawH = kit.getImageSize(resDir .. "/" .. url)
         --     w = w or rawW
         --     h = h or rawH

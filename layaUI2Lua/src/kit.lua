@@ -39,6 +39,7 @@ function readFile2Str(path)
     local f = assert(io.open(path, "r"), path)
 
     local lines = f:read("*all")
+    f:flush()
     f:close()
     return (lines)
 end

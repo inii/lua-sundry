@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":3,
+    "selectedBox":10,
+    "selecteID":14,
     "props":{"y":352,"x":278,"width":557,"sceneColor":"#000000","height":704,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
@@ -71,7 +71,7 @@
         {
             "x":15,
             "type":"List",
-            "props":{"y":58,"x":3,"width":550,"var":"lsv","runtime":"AutoTestGiftCell","height":637},
+            "props":{"y":700,"x":3,"width":550,"var":"lsv","runtime":"AutoTestGiftCell","height":614,"anchorY":1},
             "nodeParent":1,
             "label":"List(lsv)",
             "isOpen":true,
@@ -95,6 +95,71 @@
             "compId":9,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":48,"x":278,"width":552,"var":"imgTitleBgN","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":38,"anchorY":0,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgTitleBgN)",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":10,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":70,"var":"labRankN","text":"名次","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":10,
+                    "label":"Label(labRankN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":11,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":211,"var":"labNameN","text":"指挥官","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":10,
+                    "label":"Label(labNameN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":12,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":354,"var":"labLvN","text":"等级","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":10,
+                    "label":"Label(labLvN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":13,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":456,"var":"labScoreN","text":"积分","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":10,
+                    "label":"Label(labScoreN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":14,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

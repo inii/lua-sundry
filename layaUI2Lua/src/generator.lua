@@ -15,6 +15,30 @@ local function _setParentNm(parent)
     return parent and parent.name or "root"
 end
 
+
+local function _getScaleStr(dt)
+    local line
+    if dt.scaleX and dt.scaleY and dt.scaleX == dt.scaleY then
+        line = strFmt_(":setScale(%s)", dt.scaleX)
+    else
+        if dt.scaleX then
+            line = strFmt_(":setScaleX(%s)", dt.scaleX)
+        end
+
+        if dt.scaleY then
+            line = strFmt_(":setScaleY(%s)", dt.scaleY)
+        end
+    end
+
+    return line
+end
+
+local function _getRotateStr(dt)
+    if dt.rotation then
+        return strFmt_(":setRotation(%s)", dt.rotation)
+    end
+end
+
 function gen_node(dt)
     local x, y = dt.x or 0, dt.y or 0
     if not dt.parent then
@@ -30,6 +54,11 @@ function gen_node(dt)
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":setContentSize(%s, %s)", w, h))
 
+    local line = _getRotateStr(dt)
+    if line then
+        table.insert(result, line)
+    end
+    
     if dt.visible == "false" or dt.visible == false then
         table.insert(result, ":setVisible(false)")
     end
@@ -65,20 +94,15 @@ function gen_img(dt)
 
     local pname = _setParentNm(dt.parent)
     table.insert(result, strFmt_(":addTo(%s)", pname))
-    local line
-    if dt.scaleX and dt.scaleY and dt.scaleX == dt.scaleY then
-        line = strFmt_(":setScale(%s)", dt.scaleX)
+    
+    local line = _getScaleStr(dt)
+    if line then
         table.insert(result, line)
-    else
-        if dt.scaleX then
-            line = strFmt_(":setScaleX(%s)", dt.scaleX)
-            table.insert(result, line)
-        end
+    end
 
-        if dt.scaleY then
-            line = strFmt_(":setScaleY(%s)", dt.scaleY)
-            table.insert(result, line)
-        end
+    line = _getRotateStr(dt)
+    if line then
+        table.insert(result, line)
     end
 
     local ax, ay = dt.ax, dt.ay
@@ -134,6 +158,16 @@ function gen_btn(dt)
         result = result .. "\n\t" .. ":setVisible(false)"
     end
 
+    local line = _getScaleStr(dt)
+    if line then
+        result = result .. "\n\t" .. line
+    end
+
+    line = _getRotateStr(dt)
+    if line then
+        result = result .. "\n\t" .. line
+    end
+
     return result
 end
 
@@ -149,7 +183,7 @@ function gen_lab(dt)
     end
 
     if dt.font == "SimHei" then
-        table.insert(argTab, "font = display.FONT_THICK")
+        table.insert(argTab, "font = display.FONT_BOLD")
     end
 
     if dt.color then
@@ -169,8 +203,15 @@ function gen_lab(dt)
     table.insert(result, strFmt_(":addTo(%s)", pname))
     table.insert(result, strFmt_(":setAnchorPoint(%s, %s)", dt.ax, dt.ay))
     table.insert(result, strFmt_(":pos(%s, %s)", dt.x, dt.y))
-    if dt.rotation then
-        table.insert(result, strFmt_(":setRotation(%s)", dt.rotation))
+
+    local line = _getScaleStr(dt)
+    if line then
+        table.insert(result, line)
+    end
+
+    line = _getRotateStr(dt)
+    if line then
+        table.insert(result, line)
     end
 
     if dt.outlineColor then

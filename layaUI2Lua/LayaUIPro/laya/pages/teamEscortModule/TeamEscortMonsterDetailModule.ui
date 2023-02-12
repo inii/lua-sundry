@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":26,
+    "selecteID":32,
     "props":{"y":405,"x":279,"width":558,"sceneColor":"#000000","height":811,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
@@ -96,7 +96,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":449,"x":390,"var":"richTimes","text":"体力消耗：1","name":"111","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"align":"center"},
+            "props":{"y":448,"x":390,"var":"richTimes","text":"体力消耗：1","name":"111","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"align":"center"},
             "nodeParent":1,
             "label":"Label(richTimes)",
             "isDirectory":false,
@@ -123,7 +123,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":375,"x":53,"width":452,"var":"imgBar","skin":"ui/common/progress3.png","sizeGrid":"0,0,0,0","height":14,"anchorY":0.5,"anchorX":0},
+            "props":{"y":375,"x":53,"width":452,"var":"imgBar","skin":"ui/common/progress3.png","sizeGrid":"5,5,6,3","height":14,"anchorY":0.5,"anchorX":0},
             "nodeParent":1,
             "label":"Image(imgBar)",
             "isOpen":true,
@@ -233,7 +233,7 @@
         {
             "x":15,
             "type":"List",
-            "props":{"y":512,"x":3,"width":552,"var":"lsv","height":217},
+            "props":{"y":548,"x":3,"width":552,"var":"lsv","height":181},
             "nodeParent":1,
             "label":"List(lsv)",
             "isDirectory":false,
@@ -242,6 +242,84 @@
             "compId":30,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":744,"x":279,"var":"labCostOne","text":"体力消耗：1","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+            "nodeParent":1,
+            "label":"Label(labCostOne)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":32,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":510,"x":279,"width":552,"var":"imgRankTitleBgN","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":38,"anchorY":0,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgRankTitleBgN)",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":33,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":70,"var":"labRankN","text":"名次","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":33,
+                    "label":"Label(labRankN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":34,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":211,"var":"labNameN","text":"指挥官","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":33,
+                    "label":"Label(labNameN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":35,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":354,"var":"labLvN","text":"等级","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":33,
+                    "label":"Label(labLvN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":36,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":19,"x":456,"var":"labScoreN","text":"积分","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":33,
+                    "label":"Label(labScoreN)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":37,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

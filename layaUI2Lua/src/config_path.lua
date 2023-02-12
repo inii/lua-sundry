@@ -6,7 +6,7 @@ local uiUrl = "./LayaUIPro/laya"
 
 -- 下面的无需修改
 PathCfg = {
-    codePorj = {
+    codeProj = {
         main = codeUrl,
         resName = "res",
         res = codeUrl .. "/res", -- 资源路径

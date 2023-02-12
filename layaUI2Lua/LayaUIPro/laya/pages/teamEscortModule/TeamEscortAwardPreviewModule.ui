@@ -1,9 +1,9 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":9,
-    "props":{"y":245,"x":278,"width":557,"sceneColor":"#000000","height":490,"anchorY":0.5,"anchorX":0.5},
+    "selectedBox":5,
+    "selecteID":20,
+    "props":{"y":235,"x":278,"width":557,"sceneColor":"#000000","height":471,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"width":557,"var":"imgBgN","skin":"image/common2/bg_alert.png","sizeGrid":"16,201,123,173","name":"111","height":490},
+            "props":{"y":0,"x":0,"width":557,"var":"imgBgN","skin":"image/common2/bg_alert.png","sizeGrid":"16,201,123,173","name":"111","height":471},
             "nodeParent":1,
             "label":"Image(imgBgN)",
             "isOpen":true,
@@ -70,7 +70,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":267,"x":278,"width":530,"var":"imgContentBg","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":418,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":58,"x":278,"width":530,"var":"imgContentBg","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":406,"anchorY":0,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgContentBg)",
             "isOpen":true,
@@ -81,34 +81,8 @@
             "child":[
                 {
                     "x":30,
-                    "type":"Label",
-                    "props":{"y":51,"x":270,"var":"labDesc1","text":"击杀掠夺者的指挥官获得","name":"111","fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
-                    "nodeParent":5,
-                    "label":"Label(labDesc1)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":6,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":19,"x":227,"var":"labAwardTitle1","text":"击杀奖励","fontSize":18,"color":"#ffffff","bold":true,"align":"center"},
-                    "nodeParent":5,
-                    "label":"Label(labAwardTitle1)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":15,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
                     "type":"Image",
-                    "props":{"y":31,"x":112,"var":"imgL1N","skin":"image/skill/chipPos_title_line.png","scaleX":-1,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":16,"x":264,"width":514,"var":"imgL1N","skin":"image/teamEscort/titleBg2.png","sizeGrid":"0,0,0,0","height":170,"anchorX":0.5},
                     "nodeParent":5,
                     "label":"Image(imgL1N)",
                     "isOpen":true,
@@ -122,47 +96,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":31,"x":419,"var":"imgR1N","skin":"image/skill/chipPos_title_line.png","anchorY":0.5,"anchorX":0.5},
-                    "nodeParent":5,
-                    "label":"Image(imgR1N)",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":17,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":224,"x":265,"var":"labDesc2","text":"发现掠夺者的指挥官获得","fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
-                    "nodeParent":5,
-                    "label":"Label(labDesc2)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":18,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":193,"x":227,"var":"labAwardTitle2N","text":"归属奖励","fontSize":18,"color":"#ffffff","bold":true,"align":"center"},
-                    "nodeParent":5,
-                    "label":"Label(labAwardTitle2N)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":19,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":205,"x":110,"var":"imgL2N","skin":"image/skill/chipPos_title_line.png","scaleX":-1,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":270,"x":265,"width":514,"var":"imgL2N","skin":"image/teamEscort/titleBg2.png","sizeGrid":"0,0,0,0","height":170,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":5,
                     "label":"Image(imgL2N)",
                     "isOpen":true,
@@ -175,22 +109,60 @@
                 },
                 {
                     "x":30,
-                    "type":"Image",
-                    "props":{"y":205,"x":419,"var":"imgR2N","skin":"image/skill/chipPos_title_line.png","anchorY":0.5,"anchorX":0.5},
+                    "type":"Label",
+                    "props":{"y":65,"x":265,"var":"labDesc1","text":"击杀掠夺者的指挥官获得","name":"111","fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
                     "nodeParent":5,
-                    "label":"Image(imgR2N)",
-                    "isOpen":true,
+                    "label":"Label(labDesc1)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":21,
+                    "compId":6,
                     "child":[
                         ]
                 },
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":379,"x":270,"var":"labBottomDesc","text":"击杀奖励和归属奖励需要完成任务后才能获得","fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
+                    "props":{"y":38,"x":265,"var":"labAwardTitle1","text":"击杀奖励","fontSize":20,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":5,
+                    "label":"Label(labAwardTitle1)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":15,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":233,"x":265,"var":"labDesc2","text":"发现掠夺者的指挥官获得","fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
+                    "nodeParent":5,
+                    "label":"Label(labDesc2)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":18,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":209,"x":265,"var":"labAwardTitle2N","text":"归属奖励","fontSize":20,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":5,
+                    "label":"Label(labAwardTitle2N)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":19,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":368,"x":265,"var":"labBottomDesc","text":"击杀奖励和归属奖励需要完成任务后才能获得","fontSize":18,"color":"#ffd249","bold":true,"anchorX":0.5,"align":"center"},
                     "nodeParent":5,
                     "label":"Label(labBottomDesc)",
                     "isDirectory":false,

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":6,
+    "selectedBox":2,
+    "selecteID":4,
     "props":{"width":640,"sceneColor":"#000000","height":785},
     "nodeParent":-1,
     "label":"View",
@@ -53,7 +53,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":11,"x":5,"var":"labTitleN","text":"活动时间：","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
+                            "props":{"y":11,"x":5,"var":"labTitleN","text":"活动时间:","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
                             "nodeParent":2,
                             "label":"Label(labTitleN)",
                             "isDirectory":false,
@@ -66,7 +66,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"y":11,"x":105,"var":"richTime","text":"活动时间：","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
+                            "props":{"y":11,"x":105,"var":"richTime","text":"活动时间:","fontSize":18,"font":"SimHei","color":"#f3ecec","bold":true,"anchorY":0.5,"anchorX":0},
                             "nodeParent":2,
                             "label":"Label(richTime)",
                             "isDirectory":false,

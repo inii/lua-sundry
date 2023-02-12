@@ -23,7 +23,7 @@ local lfs = require("lfs")
 
 -- 复制lua模板
 function copyLuaTemplate()
-    local targetDir = PathCfg.codePorj.module .. "/" .. dirName
+    local targetDir = PathCfg.codeProj.module .. "/" .. dirName
     
     local tempUrl
     if string.find(fileName, "Module$") then 
@@ -73,7 +73,7 @@ end
 
 -- 同步图片
 function copyRes()
-    local fromDir = PathCfg.codePorj.res;
+    local fromDir = PathCfg.codeProj.res;
     local toDir = PathCfg.uiProj.res;
 
     -- 删除旧的

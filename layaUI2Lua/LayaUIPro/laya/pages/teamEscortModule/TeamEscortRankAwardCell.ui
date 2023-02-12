@@ -27,7 +27,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":0,"x":0,"width":550,"var":"imgHeadBgN","skin":"image/common2/color_black.png","height":30},
+                    "props":{"y":0,"x":0,"width":550,"var":"imgHeadBgN","skin":"image/common2/color_black.png","height":30,"alpha":0.2},
                     "nodeParent":2,
                     "label":"Image(imgHeadBgN)",
                     "isOpen":true,
