@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":11,
+    "selecteID":4,
     "props":{"width":550,"sceneColor":"#000000","height":110},
     "nodeParent":-1,
     "label":"View",
@@ -40,7 +40,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":40,"x":222,"var":"labName","text":"玩家名字","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0,"align":"center"},
+                    "props":{"y":40,"x":229,"var":"labName","text":"玩家名字","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0,"align":"center"},
                     "nodeParent":2,
                     "label":"Label(labName)",
                     "isDirectory":false,
@@ -53,7 +53,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":55,"x":360,"var":"labLv","text":"Lv. 55","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":55,"x":352,"var":"labLv","text":"Lv. 55","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":2,
                     "label":"Label(labLv)",
                     "isDirectory":false,
@@ -66,7 +66,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":55,"x":422,"var":"labHurt","text":"伤害：999","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"align":"center"},
+                    "props":{"y":55,"x":409,"var":"labHurt","text":"伤害：999","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"align":"center"},
                     "nodeParent":2,
                     "label":"Label(labHurt)",
                     "isDirectory":false,

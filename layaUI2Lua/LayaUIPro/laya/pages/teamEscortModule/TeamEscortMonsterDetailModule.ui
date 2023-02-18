@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":32,
+    "selectedBox":33,
+    "selecteID":36,
     "props":{"y":405,"x":279,"width":558,"sceneColor":"#000000","height":811,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
@@ -297,7 +297,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":19,"x":354,"var":"labLvN","text":"等级","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":19,"x":349,"var":"labLvN","text":"等级","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":33,
                     "label":"Label(labLvN)",
                     "isDirectory":false,
@@ -310,7 +310,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":19,"x":456,"var":"labScoreN","text":"积分","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":19,"x":448,"var":"labScoreN","text":"积分","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":33,
                     "label":"Label(labScoreN)",
                     "isDirectory":false,
