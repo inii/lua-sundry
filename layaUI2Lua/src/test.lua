@@ -12,6 +12,17 @@
 
 print("in test file:", ...)
 
+
+local md5 = require("md5")
+
+local str = "sal;ja;sldgjsglfd"
+print(md5.sumhexa(str))
+local str2 = "sal;ja;sldgjsglfd"
+
+print(md5.sumhexa(str2))
+
+
+
 -- local str = "#f6db86首 充 送 #1cc1f7非 卖 蓝 色 航 母\n              #f6db86充 值 金 币 双 倍 返 利" 
 
 -- str = string.gsub(str, "\n", "")
@@ -64,15 +75,15 @@ print("in test file:", ...)
 
 
 -- print(string.match("fileName", "%u[^%s]+$"))
-print(string.match("AutoTestModule.lua", "(%u%l+)%.lua$"))
+-- print(string.match("AutoTestModule.lua", "(%u%l+)%.lua$"))
 
-local path = [[ C:\Users\Administrator\Desktop\lua-sundry\layaUI2Lua/AutoTestGiftCell.ui]]
-print(string.gsub(path, [[\]], [[/]]))
+-- local path = [[ C:\Users\Administrator\Desktop\lua-sundry\layaUI2Lua/AutoTestGiftCell.ui]]
+-- print(string.gsub(path, [[\]], [[/]]))
 
-local a = {a=3,b=4}
+-- local a = {a=3,b=4}
 
-local c = setmetatable({}, {__index = a})
+-- local c = setmetatable({}, {__index = a})
 
-c.a=5
-print(c.a) 
-print(rawget(c, "a"))
+-- c.a=5
+-- print(c.a) 
+-- print(rawget(c, "a"))

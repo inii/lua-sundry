@@ -87,3 +87,20 @@ end
 -- copyLuaTemplate()
 -- copyUITemplate()
 copyRes()
+
+--[[
+
+
+    -- "F:\trunk\src\Client\Game\res\image"
+    -- Client\Game\res
+    form: resClient
+    
+    目标：
+    LayaAir 图片目录 layaUI2Lua\LayaUIPro\laya\assets
+    其中ui文件夹与Client的图集对应
+    -- assets下, 保存一份资源对比； 保存一份 lang 的对比
+    
+
+]]
+
+-- diff?   compare md5

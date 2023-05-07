@@ -115,6 +115,7 @@ local NodeStruct = {
             scaleY = raw.scaleY,
             rotation = raw.rotation, -- no default value
             parent = raw.parent,
+            touchable = raw.mouseEnabled,
             uitype = uitype
         }
     end

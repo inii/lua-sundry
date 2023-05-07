@@ -123,7 +123,7 @@ function replaceCodeUI(codeUrl, uiUrl)
 
         local rawCodeStr = kit.readFile2Str(codeUrl)
         codeStr = strFmt_("function %%1:autoUI(root, x, y)\n%s\nend", codeStr)
-        codeStr = string.gsub(rawCodeStr, "function[%s]+([^%s]+):autoUI(.-)end", codeStr)
+        codeStr = string.gsub(rawCodeStr, "function[%s]+([^%s]+):autoUI(.-)\nend", codeStr)
         
         kit.writeStr2File(codeUrl, codeStr)
     else
