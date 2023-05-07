@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":11,
-    "selecteID":9,
+    "selecteID":15,
     "props":{"width":640,"sceneColor":"#000000","height":820},
     "nodeParent":-1,
     "label":"View",
@@ -145,7 +145,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":19,"x":235,"var":"labNameN","text":"成员名字","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":19,"x":235,"var":"labNameN","text":"名字","fontSize":16,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":11,
                     "label":"Label(labNameN)",
                     "isDirectory":false,

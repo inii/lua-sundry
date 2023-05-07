@@ -2,8 +2,8 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":16,
-    "props":{"y":400,"x":310,"width":620,"sceneColor":"#000000","height":800,"anchorY":0.5,"anchorX":0.5},
+    "selecteID":24,
+    "props":{"y":400,"x":268,"width":536,"sceneColor":"#000000","height":800,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":0,"x":0,"width":620,"var":"imgBgN","skin":"image/common2/bg_alert.png","sizeGrid":"16,201,123,173","name":"111","height":800},
+            "props":{"y":0,"x":0,"width":536,"var":"imgBgN","skin":"image/ship/battleShip/upgrageBg.jpg","sizeGrid":"16,201,123,173","name":"111","height":800},
             "nodeParent":1,
             "label":"Image(imgBgN)",
             "isOpen":true,
@@ -24,12 +24,13 @@
             "hasChild":false,
             "compId":2,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":24,"x":310,"width":620,"var":"imgTitleN","skin":"image/common2/bg_alert_titleBg.png","sizeGrid":"0,165,0,165","height":49,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":24,"x":268,"width":536,"var":"imgTitleN","skin":"image/common2/bg_alert_titleBg.png","sizeGrid":"0,165,0,165","height":49,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgTitleN)",
             "isOpen":true,
@@ -38,12 +39,13 @@
             "hasChild":false,
             "compId":3,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":26,"x":586,"var":"btnCloseN","skin":"image/common2/btn_close5.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":25,"x":502,"var":"btnCloseN","skin":"image/common2/btn_close5.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(btnCloseN)",
             "isOpen":true,
@@ -52,12 +54,13 @@
             "hasChild":false,
             "compId":4,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Label",
-            "props":{"y":24,"x":310,"var":"labTitleN","text":"战舰进阶","fontSize":26,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":24,"x":268,"var":"labTitleN","text":"战舰进阶","fontSize":26,"font":"SimHei","color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Label(labTitleN)",
             "isDirectory":false,
@@ -65,25 +68,26 @@
             "hasChild":false,
             "compId":9,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":150,"x":128,"width":175,"var":"imgShipBg1","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":112,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":63,"x":268,"var":"imgNameBgN","skin":"image/ship/battleShip/upstageShipNameBg.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
-            "label":"Image(imgShipBg1)",
+            "label":"Image(imgNameBgN)",
             "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
-            "compId":5,
+            "compId":32,
             "child":[
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":-20,"x":84,"var":"labShipName1","text":"战舰名","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
-                    "nodeParent":5,
+                    "props":{"y":15,"x":108,"var":"labShipName1","text":"战舰名","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":32,
                     "label":"Label(labShipName1)",
                     "isDirectory":false,
                     "isAniNode":true,
@@ -91,25 +95,12 @@
                     "compId":19,
                     "child":[
                         ]
-                }]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":150,"x":485,"width":175,"var":"imgShipBg2","skin":"image/common2/input_bg.png","sizeGrid":"11,12,9,12","height":112,"anchorY":0.5,"anchorX":0.5},
-            "nodeParent":1,
-            "label":"Image(imgShipBg2)",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":30,
-            "child":[
+                },
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":-20,"x":84,"var":"labShipName2","text":"战舰名","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
-                    "nodeParent":30,
+                    "props":{"y":16,"x":425,"var":"labShipName2","text":"战舰名","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "nodeParent":32,
                     "label":"Label(labShipName2)",
                     "isDirectory":false,
                     "isAniNode":true,
@@ -117,12 +108,58 @@
                     "compId":31,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":267,"x":310,"width":620,"var":"imgTitleBg1N","skin":"image/ship/battleShip/conditionBg.png","sizeGrid":"0,0,0,0","anchorX":0.5},
+            "props":{"y":175,"x":144,"var":"imgShipBg1","skin":"image/ship/battleShip/battleShipIconBg.png","anchorY":0.5,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgShipBg1)",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":5,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":176,"x":463,"var":"imgShipBg2","skin":"image/ship/battleShip/battleShipIconBg.png","anchorY":0.5,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgShipBg2)",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":30,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":291,"x":268,"width":510,"var":"imgBg1N","skin":"image/common2/input_bg.png","sizeGrid":"7,12,12,13","height":164,"anchorY":0,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgBg1N)",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":33,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":294,"x":268,"var":"imgTitleBg1N","skin":"image/xiKaFactory/inherit_titleBg.png","anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgTitleBg1N)",
             "isOpen":true,
@@ -134,7 +171,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":17,"x":310,"var":"labTitle1N","text":"战舰属性","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":13,"x":268,"var":"labTitle1N","text":"战舰属性","fontSize":18,"color":"#ffedc9","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":23,
                     "label":"Label(labTitle1N)",
                     "isDirectory":false,
@@ -143,12 +180,28 @@
                     "compId":15,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":430,"x":310,"width":620,"var":"imgTitleBg2N","skin":"image/ship/battleShip/conditionBg.png","sizeGrid":"0,0,0,0","anchorX":0.5},
+            "props":{"y":460,"x":268,"width":510,"var":"imgBg2N","skin":"image/common2/input_bg.png","sizeGrid":"7,12,12,13","height":192,"anchorY":0,"anchorX":0.5},
+            "nodeParent":1,
+            "label":"Image(imgBg2N)",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":34,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":462,"x":268,"var":"imgTitleBg2N","skin":"image/xiKaFactory/inherit_titleBg.png","anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgTitleBg2N)",
             "isOpen":true,
@@ -160,7 +213,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":17,"x":310,"var":"labTitle2N","text":"原子能源","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                    "props":{"y":14,"x":268,"var":"labTitle2N","text":"原子能源","fontSize":18,"color":"#ffedc9","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
                     "nodeParent":24,
                     "label":"Label(labTitle2N)",
                     "isDirectory":false,
@@ -169,38 +222,13 @@
                     "compId":25,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":616,"x":310,"width":620,"var":"imgTitleBg3N","skin":"image/ship/battleShip/conditionBg.png","sizeGrid":"0,0,0,0","anchorX":0.5},
-            "nodeParent":1,
-            "label":"Image(imgTitleBg3N)",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":26,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":17,"x":310,"var":"labTitle3N","text":"进阶消耗","fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
-                    "nodeParent":26,
-                    "label":"Label(labTitle3N)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":27,
-                    "child":[
-                        ]
-                }]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":767,"x":428,"var":"btnTips","skin":"ui/common/btn_tip.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":767,"x":386,"var":"btnTips","skin":"ui/common/btn_tip.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(btnTips)",
             "isOpen":true,
@@ -209,12 +237,13 @@
             "hasChild":false,
             "compId":16,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":161,"x":310,"var":"imgArrow1","skin":"image/ship/battleShip/arrow.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":201,"x":269,"var":"imgArrow1","skin":"image/ship/battleShip/arrow.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgArrow1)",
             "isOpen":true,
@@ -223,12 +252,13 @@
             "hasChild":false,
             "compId":17,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":371,"x":310,"var":"imgArrow2","skin":"image/ship/battleShip/arrow.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":398,"x":275,"var":"imgArrow2","skin":"image/ship/battleShip/arrow.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(imgArrow2)",
             "isOpen":true,
@@ -237,12 +267,13 @@
             "hasChild":false,
             "compId":28,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":768,"x":310,"width":146,"var":"btnUpstage","skin":"image/common2/btn_yellow.png","height":45,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":768,"x":268,"width":146,"var":"btnUpstage","skin":"image/common2/btn_yellow.png","height":45,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Image(btnUpstage)",
             "isOpen":true,
@@ -263,12 +294,13 @@
                     "compId":6,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Label",
-            "props":{"y":359,"x":129,"width":195,"var":"richProp1","text":"升级前属性","height":18,"fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+            "props":{"y":385,"x":99,"width":190,"var":"richProp1","text":"升级前属性","height":18,"fontSize":18,"color":"#ffede9","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
             "nodeParent":1,
             "label":"Label(richProp1)",
             "isDirectory":false,
@@ -276,12 +308,13 @@
             "hasChild":false,
             "compId":18,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Label",
-            "props":{"y":359,"x":482,"width":195,"var":"richProp2","text":"升级后属性","height":18,"fontSize":18,"color":"#ffffff","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+            "props":{"y":385,"x":436,"width":190,"var":"richProp2","text":"升级后属性","height":18,"fontSize":18,"color":"#ffede9","bold":true,"anchorY":0.5,"anchorX":0.5,"align":"center"},
             "nodeParent":1,
             "label":"Label(richProp2)",
             "isDirectory":false,
@@ -289,12 +322,13 @@
             "hasChild":false,
             "compId":29,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Label",
-            "props":{"y":469,"x":310,"width":485,"var":"richEnergy","text":"注能属性","height":18,"fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
+            "props":{"y":501,"x":268,"width":485,"var":"richEnergy","text":"注能属性","height":18,"fontSize":18,"color":"#ffffff","bold":true,"anchorX":0.5,"align":"center"},
             "nodeParent":1,
             "label":"Label(richEnergy)",
             "isDirectory":false,
@@ -302,7 +336,8 @@
             "hasChild":false,
             "compId":22,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         }],
     "animations":[
         {
