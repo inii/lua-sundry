@@ -21,11 +21,11 @@ local function _getScaleStr(dt)
     if dt.scaleX and dt.scaleY and dt.scaleX == dt.scaleY then
         line = strFmt_(":setScale(%s)", dt.scaleX)
     else
-        if dt.scaleX then
+        if dt.scaleX and dt.scaleY then
+            line = strFmt_(":setScale(%s, %s)", dt.scaleX, dt.scaleY)
+        elseif dt.scaleX then
             line = strFmt_(":setScaleX(%s)", dt.scaleX)
-        end
-
-        if dt.scaleY then
+        elseif dt.scaleY then
             line = strFmt_(":setScaleY(%s)", dt.scaleY)
         end
     end
@@ -98,6 +98,10 @@ function gen_img(dt)
     local line = _getScaleStr(dt)
     if line then
         table.insert(result, line)
+    end
+
+    if dt.touchable then
+        table.insert(result, ":setTouchEnabled(true)")
     end
 
     line = _getRotateStr(dt)
@@ -288,7 +292,7 @@ function gen_lsv(dt)
     table.insert(paramArr, strFmt_("viewRect = cc.rect(%s, %s, %s, %s),", x, y, w, h))
 
     table.insert(paramArr, "async = true,")
-    table.insert(paramArr, "-- bgColor = cc.c4b(255,110,330,155),")
+    table.insert(paramArr, "-- bgColor = cc.c4b(255,110,130,155),")
 
     local str1 = table.concat(paramArr, nt2) .. "\n\t})"
     local str2 = strFmt_(":addTo(%s)", _setParentNm(dt.parent))
