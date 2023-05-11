@@ -12,14 +12,84 @@
 
 print("in test file:", ...)
 
+require("config_path")
+local ResDir = PathCfg.codeProj.res
 
-local md5 = require("md5")
+local totalLangTab = {}
+local function _setLangTab()
+    local url = ResDir .. "/config/common/languageconfig.lua"
+    local lang = dofile(url)
 
-local str = "sal;ja;sldgjsglfd"
-print(md5.sumhexa(str))
-local str2 = "sal;ja;sldgjsglfd"
+    for k, v in pairs(lang) do
+        v = string.gsub(v, "\n", "")
+        totalLangTab[v] = k
+    end
+end
+_setLangTab()
 
-print(md5.sumhexa(str2))
+
+local key = next(totalLangTab)
+if key then print("look format:", key, totalLangTab[key]) end
+print("look format ", totalLangTab["领取"])
+
+
+local langPath = "languageLite.lua"
+local langMap 
+if io.open(langPath) then
+    langMap = dofile(langPath) or {}
+    print("open file ", langPath)
+else 
+    langMap = {}
+    print("not lang file:")
+end
+
+
+local function saveLangLite()
+    local file = io.open(langPath, 'w+') 
+    if file then
+        local str = "return {\n"
+        for k, v in pairs(langMap) do
+            str = str .. string.format("\"%s\"=\"%s\",\n", k, v) 
+        end
+        str = str .. "}"
+        
+        file:write(str)
+        file:flush()
+        file:close()
+    end
+end
+
+local function getLangKey(value)
+    local key = langMap[value]
+    if key then
+        return key
+    end
+
+    local key = totalLangTab[value]
+    if key then
+        langMap[value] = key
+        return key
+    end
+end
+
+local value = "领取"
+print(getLangKey(value))
+
+saveLangLite()
+
+
+
+
+
+-- local md5 = require("md5")
+
+
+
+-- local str = "sal;ja;sldgjsglfd"
+-- print(md5.sumhexa(str))
+-- local str2 = "sal;ja;sldgjsglfd"
+
+-- print(md5.sumhexa(str2))
 
 
 
