@@ -1,8 +1,5 @@
 CHCP 65001
 @echo off
 
-
-%~dp0\libs\lua.exe %~dp0\src\main.lua
-
-
-pause
+cd /d %~dp0
+start libs/lua.exe src/main.lua

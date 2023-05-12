@@ -17,23 +17,15 @@ module(..., package.seeall)
 local lfs = require("lfs")
 local json = require("json")
 
+-- 先处理lang
+local LangManager = require("LangManager")
+local PathCfg = require("PathCfg")
+
 -- local md5 = require("md5")
-local ResDir = PathCfg.codeProj.res
 
 local strFmt_ = string.format
 local dump = kit.dump
 
-local LangTab = {}
-local function _setLangTab()
-    local url = ResDir .. "/config/common/languageconfig.lua"
-    local lang = dofile(url)
-
-    for k, v in pairs(lang) do
-        v = string.gsub(v, "\n", "")
-        LangTab[v] = k
-    end
-end
-_setLangTab()
 
 -- switch content to lang table key.
 local function _text2LangKey(str)
@@ -44,7 +36,7 @@ local function _text2LangKey(str)
 
     -- \n in LayaAir editor
     str = string.gsub(str, "\\n", "")
-    local text = LangTab[str]
+    local text = LangManager:getGameLangKey(str)
     return text and strFmt_("getLang(\"%s\")", text) or [[""]]
 end
 
@@ -116,7 +108,7 @@ function ui2CodeStr(uiUrl)
 end
 
 function replaceCodeUI(codeUrl, uiUrl)
-    print("start replace:", codeUrl, uiUrl)
+    -- kit.log2file("start replace=> codeUrl:%s  uiUrl:%s ", codeUrl, uiUrl)
     if kit.file_exists(codeUrl) then
         local codeStr = ui2CodeStr(uiUrl)
         assert(codeStr, "not get code string")
@@ -127,7 +119,7 @@ function replaceCodeUI(codeUrl, uiUrl)
         
         kit.writeStr2File(codeUrl, codeStr)
     else
-        print("invalid codeUrl:", codeUrl)
+        -- kit.log2file("invalid codeUrl:%s", codeUrl)
     end
 end
 
@@ -218,8 +210,9 @@ function run(dirName, fileName)
         return
     end
 
-    print("export all ui ......")
     exportAll()
+
+    LangManager:saveLangCache()
 end
 
 

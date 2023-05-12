@@ -21,6 +21,7 @@ function Replace_Name:dispose()
 		ab.uninstall("Replace_Name")
 	end
 end
+
 function Replace_Name:doUnLoad()
 	Replace_Name.super.doUnLoad(self)
 end
@@ -38,6 +39,31 @@ function Replace_Name:autoUI()
 
 end
 
+function Replace_Name:lsvDelegate(listView, tag, index)
+    if tag == cc.ui.UIListView.COUNT_TAG then
+        self._dataArr and #self._dataArr or 0
+    elseif tag == cc.ui.UIListView.CELL_TAG then
+        local cell, item
+        item = listView:dequeueItem()
+        if not item then
+            item = listView:newItem()
+            cell = AutoTestGiftCell.new(530, 135)
+            item:addContent(cell)
+            item:setItemSize(530, 135)
+            -- item:setPosition(-265, 135/2)
+        else
+            cell = item:getContent()
+        end
+
+		-- 通过闭包获取数据
+		cell:setDataCbk = function() 
+			return self and self._dataArr[index]
+		end
+		cell:updateCell()
+
+        return item
+    end
+end
 
 --点击关闭按钮
 function Replace_Name:closeClick(event)

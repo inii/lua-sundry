@@ -3,9 +3,9 @@
 local codeUrl = "F:/trunk/src/Client/Game"
 local uiUrl = "./LayaUIPro/laya"
 
-
+-- config_path
 -- 下面的无需修改
-PathCfg = {
+local PathCfg = {
     codeProj = {
         main = codeUrl,
         resName = "res",
@@ -19,3 +19,5 @@ PathCfg = {
         pages = uiUrl .. "/pages"
     }
 }
+
+return PathCfg

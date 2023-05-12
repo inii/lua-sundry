@@ -9,12 +9,27 @@ package.path = "src/?.lua;" --.. package.path;
 
 
 require("kit");
-require("config_path")
+local PathCfg = require("PathCfg")
 
 local args = ... or {};
 local dirName, fileName = args[1], args[2];
+
+if dirName then
+    print("dirName =======>", dirName)
+end
+
+if fileName then
+    print("fileName =======>", fileName)
+end
+
+
 local prcs = require("process");
 prcs.run(dirName, fileName);
+
+print("process all done!")
+
+os.execute("pause");
+
 
 -- local PathCfg = require("config_path")
 -- local filePrefix = "^" .. PathCfg.uiProj.pages

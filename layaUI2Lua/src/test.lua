@@ -12,7 +12,7 @@
 
 print("in test file:", ...)
 
-require("config_path")
+local PathCfg = require("PathCfg")
 local ResDir = PathCfg.codeProj.res
 
 local totalLangTab = {}
@@ -115,7 +115,6 @@ saveLangLite()
 -- end
 
 -- local kit = require("kit")
--- local PathCfg = require("config_path")
 -- local dirName = ""
 -- local targetDir = PathCfg.codePorj.module --.. "/" .. dirName
 

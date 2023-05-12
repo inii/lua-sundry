@@ -16,7 +16,8 @@ if not fileName then
 end
 
 package.path = "src/?.lua;" --.. package.path;
-require("config_path")
+local PathCfg = require("PathCfg")
+
 require("kit")
 local lfs = require("lfs")
 

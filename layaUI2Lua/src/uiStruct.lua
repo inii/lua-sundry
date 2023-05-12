@@ -1,5 +1,8 @@
 module(..., package.seeall)
 
+local PathCfg = require("PathCfg")
+
+
 local function _getXY(dt)
     local x, y = dt.x or 0, dt.y or 0
     -- if x == 0 then

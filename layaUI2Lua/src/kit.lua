@@ -26,13 +26,18 @@ end
 function writeStr2File(path, str, mod)
     local f = assert(io.open(path, mod or 'w'), path)
 
-    local rst = f:write(str)
+    f:write(str)
     f:flush()
     f:close()
-    if rst then
-        print("success write to ", path)
-    end
 end
+
+-- function log2file(content, ...)
+--     if content then
+--         content = string.format(content, ...)    
+--     end
+--     content = os.date("%Y-%m-%d %H:%M:%S", os.time()) .. content
+--     writeStr2File("log.txt", content, 'w+')
+-- end
 
 function readFile2Str(path)
     path = string.gsub(path, [[\]], [[/]])
@@ -297,6 +302,37 @@ function dump(value, desciption, nesting)
     for i, line in ipairs(result) do
         print(line)
     end
+end
+
+-- 复制lua模板
+function copyLuaTemplate(targetPath)
+    local targetDir = PathCfg.codeProj.module .. "/" .. dirName
+    
+    local tempUrl
+    if string.find(fileName, "Module$") then 
+        tempUrl = lfs.currentdir() .. "/template/ModuleTemplate.lua"
+    elseif string.find(fileName, "Panel$") then
+        tempUrl = lfs.currentdir() .. "/template/PanelTemplate.lua"
+        targetDir = targetDir .. "/panel"
+    else
+        tempUrl = lfs.currentdir() .. "/template/ViewTemplate.lua"
+        targetDir = targetDir .. "/view"
+    end
+    
+    if not kit.isDir(targetDir) then -- 不存在，创建
+        local ok, err = lfs.mkdir(targetDir)
+        if not ok then return print("failded copyLuaTemplate", targetDir, err) end
+    end
+
+    local targetFile = targetDir .. string.format("/%s.lua", fileName)
+    if kit.isFile(targetFile) then
+        print("no need to create a lua file existed.", targetFile)        
+        return
+    end
+
+    local fileStr = kit.readFile2Str(tempUrl)
+    fileStr = string.gsub(fileStr, "Replace_Name", fileName)
+    kit.writeStr2File(targetFile, fileStr)
 end
 
 -----------------------------------------------------------------------------

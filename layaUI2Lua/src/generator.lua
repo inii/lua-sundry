@@ -119,7 +119,6 @@ function gen_img(dt)
     end
 
     if dt.visible == "false" or dt.visible == false then
-        print("dt.visible:", dt.visible)
         table.insert(result, ":setVisible(false)")
     end
 
