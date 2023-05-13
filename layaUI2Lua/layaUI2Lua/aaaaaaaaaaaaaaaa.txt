@@ -1,0 +1,3 @@
+ECHO is off.
+F:\trunk\src\Client\layaUI2Lua\laya\pages\activityModule\Act12555Cell.ui 
+F:\trunk\src\Client\layaUI2Lua\laya\pages\activityModule\Act12555Cell.ui 

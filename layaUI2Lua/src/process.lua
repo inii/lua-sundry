@@ -71,7 +71,10 @@ local function formatElement(tab)
                 rstTab[v.compId] = struct
             end
         else
-            print(v.label, "no named [var] in LayaAir" .. (v.type or ""))
+            -- if v.label ~= "UIView" and v.type ~= "UIView" then
+            print("Warning", v.label, v.type)
+            kit.log2file([[%s, "no named [var] in LayaAir" .. (%s or "")]], v.label, v.type)
+            -- end
         end
 
         if (v.child) then

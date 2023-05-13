@@ -3,3 +3,4 @@ CHCP 65001
 
 cd /d %~dp0
 start libs/lua.exe src/main.lua
+

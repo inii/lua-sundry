@@ -10,6 +10,12 @@
 -- print(md5.sumhexa(str))
 
 
+
+local kit = require("kit")
+print("================================", kit.isDir("."))
+
+do return end
+
 print("in test file:", ...)
 
 local PathCfg = require("PathCfg")
@@ -114,7 +120,7 @@ saveLangLite()
 --     print("bye 再见 ")
 -- end
 
--- local kit = require("kit")
+
 -- local dirName = ""
 -- local targetDir = PathCfg.codePorj.module --.. "/" .. dirName
 

@@ -31,13 +31,13 @@ function writeStr2File(path, str, mod)
     f:close()
 end
 
--- function log2file(content, ...)
---     if content then
---         content = string.format(content, ...)    
---     end
---     content = os.date("%Y-%m-%d %H:%M:%S", os.time()) .. content
---     writeStr2File("log.txt", content, 'w+')
--- end
+function log2file(content, ...)
+    if content then
+        content = string.format(content, ...)    
+    end
+    content = os.date("%Y-%m-%d %H:%M:%S ", os.time()) .. content
+    writeStr2File("log.txt", content .. "\n", 'a+')
+end
 
 function readFile2Str(path)
     path = string.gsub(path, [[\]], [[/]])
@@ -333,6 +333,37 @@ function copyLuaTemplate(targetPath)
     local fileStr = kit.readFile2Str(tempUrl)
     fileStr = string.gsub(fileStr, "Replace_Name", fileName)
     kit.writeStr2File(targetFile, fileStr)
+end
+
+--写入文件增强模式，没有该目录则先创建目录，然后创建文件
+function kit.writeStr2FileAdd(path, content, mod)
+    -- local dir = kit.getFileDir(filename) 
+
+    local file = io.open(path, mod or 'w')
+    if not file then
+        local dir, filename = string.match(path, "(.+)/[^/]*%.%w+$") 
+        lfs.mkdir("dir", "p")
+
+        file = io.open(path, mod or 'w')
+    end
+
+    file:write(content)
+    file:flush()
+    file:close()
+    assert(io.open(".","w"))
+    -- -- 判断文件夹是否存在
+    -- function isdir(path)
+    --     local mode = lfs.attributes(path, "mode")
+    --     return mode == "directory"
+    -- end
+
+    -- if not isdir(path) then
+    --     -- 创建文件夹
+    --     lfs.mkdir(path)
+    --     print("Folder created.")
+    -- else
+    --     print("Folder exists.")
+    -- end
 end
 
 -----------------------------------------------------------------------------
